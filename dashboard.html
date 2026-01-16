@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvuspet | Board 🎬</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-grid flex h-screen overflow-hidden text-slate-800">
+
+    <!-- Overlay para Mobile -->
+    <div id="sidebarOverlay" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-slate-900/50 z-[90] hidden lg:hidden"></div>
+
+    <!-- Barra Lateral -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 lg:static bg-white border-r-6 border-slate-900 w-64 flex flex-col flex-shrink-0 transition-transform duration-300 z-[100]">
+        <div class="p-6 border-b-6 border-slate-900 flex items-center gap-3">
+            <i class="fa-solid fa-paw text-teal-400 text-xl"></i>
+            <span class="text-xl font-black italic uppercase">Salvuspet</span>
+        </div>
+        <nav class="flex-1 p-4 space-y-2" id="sidebarNav"></nav>
+        <div class="p-4 border-t-6 border-slate-900 bg-slate-50">
+            <button onclick="logout()" class="btn-story flex items-center justify-center gap-3 w-full py-3 bg-rose-500 text-white rounded-xl text-xs font-black uppercase italic">
+                <i class="fa-solid fa-power-off"></i> Sair 🎬
+            </button>
+        </div>
+    </aside>
+
+    <!-- Área Principal -->
+    <main class="flex-1 flex flex-col min-w-0 h-screen">
+        <!-- Header Fixo -->
+        <header class="bg-white border-b-6 border-slate-900 h-20 flex flex-shrink-0 items-center justify-between px-6 z-40">
+            <div class="flex items-center gap-4">
+                <button onclick="toggleMobileSidebar()" class="lg:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+                <h2 id="pageTitle" class="text-sm md:text-base font-black uppercase italic truncate">Status</h2>
+            </div>
+            <div onclick="setView('profile')" class="flex items-center gap-3 cursor-pointer group">
+                <div class="text-right hidden sm:block leading-none">
+                    <p id="userName" class="text-[10px] font-black uppercase truncate max-w-[100px]">Usuário</p>
+                    <span id="headerBadge" class="mt-1 block"></span>
+                </div>
+                <img id="userAvatar" src="" class="w-10 h-10 rounded-xl border-3 border-slate-900 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] object-cover">
+            </div>
+        </header>
+
+        <!-- Container de Scroll -->
+        <div id="mainContent" class="flex-1 overflow-y-auto bg-grid relative flex flex-col">
+            <!-- As views são injetadas aqui -->
+            <div id="dashboardView" class="p-6 md:p-8 flex-1"></div>
+            
+            <!-- Rodapé fixo no final do conteúdo -->
+            <footer class="py-10 text-center bg-white border-t-6 border-slate-900 w-full mt-auto">
+                <p class="text-[12px] font-black uppercase text-slate-900">salvuspet © 2026 <br> Developed by: Ed, William, Alaide e Arthur</p>
+            </footer>
+        </div>
+    </main>
+
+    <!-- Modal Transparência (Doador e Visualização ONG) -->
+    <div id="campaignDetailModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-[200] hidden items-center justify-center p-4">
+        <div class="bg-white story-panel w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col animate-pop-in">
+            <div class="p-6 border-b-4 border-slate-900 flex justify-between items-center bg-teal-50">
+                <div class="flex items-center gap-4">
+                    <img id="detailImg" class="w-16 h-16 rounded-xl border-3 border-slate-900 object-cover">
+                    <h3 id="detailName" class="text-xl font-black uppercase italic">Pet</h3>
+                </div>
+                <button onclick="toggleModal('campaignDetailModal')" class="text-2xl opacity-50 hover:opacity-100 transition"><i class="fa-solid fa-circle-xmark"></i></button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+                <div>
+                    <h4 class="text-[10px] font-black uppercase text-teal-600 mb-4 border-b-2 border-slate-200">Linha do Tempo de Transparência 🎬</h4>
+                    <div id="transparencyTimeline" class="space-y-4"></div>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-black uppercase text-sky-600 mb-4 border-b-2 border-slate-200">Apoiadores (Elenco) 🦴</h4>
+                    <div id="donorsList" class="grid grid-cols-1 md:grid-cols-2 gap-2"></div>
+                </div>
+            </div>
+            <div class="p-6 border-t-4 border-slate-900 bg-slate-50">
+                <button onclick="showToast('🐾 Obrigado!', 'Doação simulada com sucesso.')" class="btn-story w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase italic">Investir nesta Causa ⚡</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Novo Registro (ONG) -->
+    <div id="updateModal" class="fixed inset-0 bg-slate-900/70 z-[200] hidden items-center justify-center p-4">
+        <div class="bg-white story-panel w-full max-w-lg p-8 animate-pop-in">
+            <h3 class="text-xl font-black uppercase italic mb-6">Novo Registro de Transparência 🎥</h3>
+            <textarea placeholder="O que aconteceu hoje? Descreva o progresso..." class="w-full p-4 border-3 border-slate-900 rounded-xl font-bold h-32 mb-4 outline-none focus:border-teal-400"></textarea>
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div class="bg-slate-100 p-3 rounded-xl border-2 border-slate-900 text-center cursor-pointer hover:bg-slate-200">
+                    <i class="fa-solid fa-camera mb-1 block"></i>
+                    <span class="text-[8px] font-black uppercase">Foto do Pet</span>
+                </div>
+                <div class="bg-slate-100 p-3 rounded-xl border-2 border-slate-900 text-center cursor-pointer hover:bg-slate-200">
+                    <i class="fa-solid fa-file-invoice-dollar mb-1 block"></i>
+                    <span class="text-[8px] font-black uppercase">Nota Fiscal</span>
+                </div>
+            </div>
+            <button onclick="toggleModal('updateModal'); showToast('Gravado!', 'Transparência atualizada para os apoiadores.')" class="btn-story w-full bg-slate-900 text-white py-4 rounded-xl uppercase font-black italic">Publicar Registro</button>
+        </div>
+    </div>
+
+    <!-- Sistema de Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 left-6 md:left-auto md:w-80 bg-white border-4 border-slate-900 p-4 rounded-2xl shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] translate-y-32 opacity-0 transition-all duration-500 z-[300] flex items-center gap-4">
+        <div class="w-10 h-10 bg-teal-400 border-3 border-slate-900 rounded-lg flex-shrink-0 flex items-center justify-center text-white"><i class="fa-solid fa-check"></i></div>
+        <div class="leading-none">
+            <p class="font-black text-xs uppercase italic mb-1" id="toastTitle"></p>
+            <p class="text-[9px] font-bold text-slate-400 uppercase" id="toastMsg"></p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

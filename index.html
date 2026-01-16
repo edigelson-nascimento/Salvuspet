@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvuspet | Storyboard 🐾</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-grid text-slate-800">
+
+    <nav class="bg-white nav-sketch sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-teal-400 border-3 border-slate-900 rounded-lg flex items-center justify-center text-white text-xl rotate-3 shadow-[3px_3px_0px_0px_rgba(15,23,42,1)]">
+                    <i class="fa-solid fa-paw"></i>
+                </div>
+                <h1 class="text-2xl font-black italic tracking-tighter text-slate-900 uppercase">Salvuspet</h1>
+            </div>
+            <div class="hidden md:flex gap-8 items-center font-bold text-sm uppercase tracking-widest">
+                <a href="#cenario" class="hover:text-teal-500 transition">O Cenário</a>
+                <a href="#ao-vivo" class="hover:text-teal-500 transition">Ao Vivo</a>
+                <a href="#campanhas" class="hover:text-teal-500 transition">Campanhas</a>
+                <button onclick="openLoginModal('donor')" class="btn-story bg-teal-400 text-white px-6 py-2 rounded-lg hover:bg-teal-500">Log-in</button>
+            </div>
+        </div>
+    </nav>
+
+    <header id="cenario" class="py-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center border-b-6 border-slate-900">
+        <div class="animate-step">
+            <span class="badge-step mb-4 inline-block uppercase tracking-widest">Cena 01</span>
+            <h2 class="text-5xl md:text-7xl font-black text-slate-900 leading-none mb-6 uppercase">Patinhas <span class="text-teal-500 underline decoration-slate-900 underline-offset-8">precisam</span> de você.</h2>
+            <p class="text-xl text-slate-600 font-medium mb-10 leading-relaxed italic">A Salvuspet é a plataforma nacional de financiamento coletivo para a causa animal.</p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#campanhas" class="btn-story bg-slate-900 text-white px-10 py-4 rounded-xl text-lg uppercase italic">Ver Campanhas</a>
+                <button onclick="openLoginModal('donor')" class="btn-story bg-white text-slate-900 px-10 py-4 rounded-xl text-lg uppercase italic border-3 border-slate-900">Quero Doar</button>
+            </div>
+        </div>
+        <div class="relative animate-step">
+            <div class="story-panel overflow-hidden rotate-2">
+                <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1200&auto=format&fit=crop" class="w-full h-[450px] object-cover grayscale">
+            </div>
+            <!-- Badge de Tempo Real -->
+            <div class="absolute -bottom-6 -right-6 bg-rose-500 text-white p-4 story-panel rotate-3 animate-pulse">
+                <p class="text-xs font-black uppercase italic tracking-tighter"><i class="fa-solid fa-circle text-[8px] mr-2"></i> 1.240 Ativos Agora</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEED EM TEMPO REAL -->
+    <section id="ao-vivo" class="bg-white border-b-6 border-slate-900 py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-3 h-3 bg-rose-500 rounded-full animate-ping"></div>
+                <h3 class="text-xl font-black uppercase italic">Ações em Tempo Real 🎥</h3>
+            </div>
+            <div id="liveFeed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden">
+                <!-- Injetado via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CAMPANHAS EM DESTAQUE -->
+    <section id="campanhas" class="py-24 px-6 bg-grid">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="badge-step mb-4">Storyboard de Causas</span>
+                <h2 class="text-4xl md:text-5xl font-black uppercase italic">Campanhas em Destaque</h2>
+            </div>
+            <div id="featuredCampaignsIndex" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Injetado via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="personagens" class="py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-black mb-12 uppercase italic">Escolha sua Missão</h2>
+            <div class="grid md:grid-cols-2 gap-12 text-slate-900">
+                <div class="story-panel bg-white p-10 flex flex-col items-center">
+                    <i class="fa-solid fa-heart text-sky-500 text-4xl mb-6"></i>
+                    <h3 class="text-xl font-black mb-6 uppercase">Doador Herói</h3>
+                    <button onclick="openLoginModal('donor')" class="btn-story w-full bg-sky-400 text-white py-4 rounded-xl uppercase font-black">Entrar</button>
+                </div>
+                <div class="story-panel bg-white p-10 flex flex-col items-center">
+                    <i class="fa-solid fa-house-chimney-medical text-orange-500 text-4xl mb-6"></i>
+                    <h3 class="text-xl font-black mb-6 uppercase">Protetor / ONG</h3>
+                    <button onclick="openLoginModal('protector')" class="btn-story w-full bg-orange-400 text-white py-4 rounded-xl uppercase font-black">Entrar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE DETALHES (Também no index agora) -->
+    <div id="campaignDetailModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-[200] hidden items-center justify-center p-4">
+        <div class="bg-white story-panel w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col animate-pop-in">
+            <div class="p-6 border-b-4 border-slate-900 flex justify-between items-center bg-teal-50">
+                <div class="flex items-center gap-4">
+                    <img id="detailImg" class="w-16 h-16 rounded-xl border-3 border-slate-900 object-cover">
+                    <h3 id="detailName" class="text-xl font-black uppercase italic">Pet</h3>
+                </div>
+                <button onclick="toggleModal('campaignDetailModal')" class="text-2xl opacity-50 hover:opacity-100 transition"><i class="fa-solid fa-circle-xmark"></i></button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 space-y-8 custom-scrollbar">
+                <div>
+                    <h4 class="text-[10px] font-black uppercase text-teal-600 mb-4 border-b-2 border-slate-200">Linha do Tempo de Transparência 🎬</h4>
+                    <div id="transparencyTimeline" class="space-y-4"></div>
+                </div>
+                <div>
+                    <h4 class="text-[10px] font-black uppercase text-sky-600 mb-4 border-b-2 border-slate-200">Apoiadores 🦴</h4>
+                    <div id="donorsList" class="grid grid-cols-1 md:grid-cols-2 gap-2"></div>
+                </div>
+            </div>
+            <div class="p-6 border-t-4 border-slate-900 bg-slate-50">
+                <button onclick="openLoginModal('donor')" class="btn-story w-full bg-slate-900 text-white py-4 rounded-xl font-black uppercase italic">Entrar para Apoiar ⚡</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden items-center justify-center p-6">
+        <div class="bg-white story-panel w-full max-w-md overflow-hidden p-0 animate-pop-in">
+            <div class="flex border-b-3 border-slate-900">
+                <button onclick="switchTab('login')" id="tabLogin" class="flex-1 py-4 font-black uppercase italic text-sm bg-teal-400 text-slate-900 border-r-3 border-slate-900">Entrar</button>
+                <button onclick="switchTab('register')" id="tabRegister" class="flex-1 py-4 font-black uppercase italic text-sm bg-white text-slate-400">Cadastrar</button>
+            </div>
+            <form id="authForm" class="p-8 space-y-4" onsubmit="handleAuth(event)">
+                <div id="nameField" class="hidden">
+                    <label class="text-[10px] font-black uppercase mb-1 block">Seu Nome</label>
+                    <input type="text" placeholder="Nome Completo" class="w-full p-3 border-3 border-slate-900 rounded-xl font-bold">
+                </div>
+                <div id="docField" class="hidden">
+                    <label class="text-[10px] font-black uppercase mb-1 block">CPF ou CNPJ</label>
+                    <input type="text" placeholder="000.000.000-00" class="w-full p-3 border-3 border-slate-900 rounded-xl font-bold">
+                </div>
+                <div>
+                    <label class="text-[10px] font-black uppercase mb-1 block">E-mail</label>
+                    <input type="email" required placeholder="email@salvuspet.com.br" class="w-full p-3 border-3 border-slate-900 rounded-xl font-bold">
+                </div>
+                <div>
+                    <label class="text-[10px] font-black uppercase mb-1 block">Senha</label>
+                    <input type="password" required placeholder="••••••••" class="w-full p-3 border-3 border-slate-900 rounded-xl font-bold">
+                </div>
+                <button type="submit" id="submitBtn" class="btn-story w-full py-4 rounded-xl text-white text-lg uppercase italic bg-slate-900 transition-all">
+                    Ação! 🎬
+                </button>
+                <button type="button" onclick="closeLoginModal()" class="w-full text-[10px] font-black uppercase opacity-30 mt-4">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="fixed bottom-6 right-6 left-6 md:left-auto md:w-80 bg-white border-4 border-slate-900 p-4 rounded-2xl shadow-[8px_8px_0px_0px_rgba(15,23,42,1)] translate-y-32 opacity-0 transition-all duration-500 z-[300] flex items-center gap-4">
+        <div class="w-10 h-10 bg-teal-400 border-3 border-slate-900 rounded-lg flex-shrink-0 flex items-center justify-center text-white"><i class="fa-solid fa-check"></i></div>
+        <div class="leading-none">
+            <p class="font-black text-xs uppercase italic mb-1" id="toastTitle"></p>
+            <p class="text-[9px] font-bold text-slate-400 uppercase" id="toastMsg"></p>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t-6 border-slate-900 py-10 text-center">
+        <p class="text-[12px] font-black uppercase text-slate-900">salvuspet © 2026 <br> Developed by: Ed, William, Alaide e Arthur</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

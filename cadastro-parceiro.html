@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png"
+        href="./assets/logo2.png" content="https://cdn.discordapp.com/attachments/1447387480146972815/1465398920845725867/20260124_165456_0000.png?ex=6978f698&is=6977a518&hm=ec3f5e93305d2f2da759b11a0f716da6aba9805eee5095929edcb7769b4ce842&" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cadastro de Parceiro | SalvusPet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: "Manrope", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+    <!-- Top Navigation Bar -->
+    <header
+        class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#dbdfe6] dark:border-b-gray-800 bg-white dark:bg-background-dark px-10 py-3 sticky top-0 z-50">
+        <div class="flex items-center gap-4 text-primary">
+            <a href="../fluxo_principal/code.html">
+                <img src="./assets/logo.png"
+                    alt="SalvusPet Logo"
+                    class="h-10 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+            </a>
+        </div>
+        <div class="flex flex-1 justify-end gap-4 items-center">
+            <div class="hidden md:flex items-center gap-9">
+                <a class="text-[#111318] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors"
+                    href="pagina-principal.html">Início</a>
+                <a class="text-[#111318] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors"
+                    href="#">Sobre</a>
+                <a class="text-[#111318] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors"
+                    href="#">Ajuda</a>
+            </div>
+            <button
+                class="theme-toggle flex items-center justify-center rounded-full size-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                <span class="material-symbols-outlined theme-icon">dark_mode</span>
+            </button>
+            <button
+                class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-green-700 transition-colors">
+                <a href="dashboard-clinica.html"><span class="truncate">Suporte</span>
+            </button>
+            <button id="menu-toggle" class="md:hidden text-2xl material-symbols-outlined p-2">menu</button>
+        </div>
+    </header>
+    <main class="max-w-[960px] mx-auto py-10 px-6">
+        <!-- Page Heading -->
+        <div class="flex flex-col gap-3 mb-8">
+            <h1 class="text-[#111318] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Cadastro de
+                Parceiro Credenciado</h1>
+            <p class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal">Preencha os dados abaixo
+                para registrar sua instituição em nossa rede de parceiros e ampliar seu alcance.</p>
+        </div>
+        <!-- Progress Bar -->
+        <div class="bg-white dark:bg-gray-900 rounded-xl p-6 border border-[#dbdfe6] dark:border-gray-800 mb-8">
+            <div class="flex flex-col gap-3">
+                <div class="flex gap-6 justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-xl">info</span>
+                        <p class="text-[#111318] dark:text-white text-base font-semibold leading-normal">Etapa 1 de 3:
+                            Dados Institucionais</p>
+                    </div>
+                    <p class="text-[#111318] dark:text-white text-sm font-bold leading-normal">33%</p>
+                </div>
+                <div class="rounded-full bg-[#dbdfe6] dark:bg-gray-700 overflow-hidden">
+                    <div class="h-2.5 rounded-full bg-primary" style="width: 33%;"></div>
+                </div>
+                <p class="text-[#616f89] dark:text-gray-400 text-sm font-normal leading-normal">Informações básicas e
+                    categoria de atuação</p>
+            </div>
+        </div>
+        <!-- Form Card -->
+        <div
+            class="bg-white dark:bg-gray-900 rounded-xl border border-[#dbdfe6] dark:border-gray-800 shadow-sm overflow-hidden">
+            <!-- Section 1: Dados Institucionais -->
+            <div class="p-6 border-b border-[#f0f2f4] dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary">domain</span>
+                    <h2 class="text-[#111318] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Dados
+                        Institucionais</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Razão Social</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="Ex: Clínica Veterinária Amigo Fiel Ltda" type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">CNPJ</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="00.000.000/0000-00" type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Nome Fantasia</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="Como sua empresa é conhecida" type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Categoria</label>
+                        <select
+                            class="form-select w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                            <option value="">Selecione uma categoria</option>
+                            <option value="clinic">Clínica</option>
+                            <option value="ngo">ONG</option>
+                            <option value="brand">Marca / Indústria</option>
+                            <option value="petstore">Pet Store</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Section 2: Endereço -->
+            <div class="p-6 border-b border-[#f0f2f4] dark:border-gray-800 bg-background-light/30 dark:bg-gray-800/20">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary">location_on</span>
+                    <h2 class="text-[#111318] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                        Localização</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">CEP</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="00000-000" type="text" />
+                    </div>
+                    <div class="md:col-span-2 flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Logradouro</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="Rua, Avenida, etc." type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Número</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="123" type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Cidade</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                            placeholder="Ex: São Paulo" type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Estado</label>
+                        <select
+                            class="form-select w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary">
+                            <option value="">UF</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="MG">Minas Gerais</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- Section 3: Contato -->
+            <div class="p-6 border-b border-[#f0f2f4] dark:border-gray-800">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary">contact_mail</span>
+                    <h2 class="text-[#111318] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                        Informações de Contato</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Nome do Responsável</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="Nome Completo" type="text" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">E-mail Corporativo</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="email@empresa.com.br" type="email" />
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-[#111318] dark:text-white text-sm font-medium">Telefone / WhatsApp</label>
+                        <input
+                            class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="(00) 00000-0000" type="tel" />
+                    </div>
+                </div>
+            </div>
+            <!-- Section 4: Documentação -->
+            <div class="p-6">
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="material-symbols-outlined text-primary">cloud_upload</span>
+                    <h2 class="text-[#111318] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">
+                        Documentação</h2>
+                </div>
+                <p class="text-[#616f89] dark:text-gray-400 text-sm mb-4">Anexe as licenças de funcionamento ou
+                    credenciais profissionais (PDF, JPG ou PNG).</p>
+                <div
+                    class="border-2 border-dashed border-[#dbdfe6] dark:border-gray-700 rounded-xl p-8 text-center flex flex-col items-center justify-center gap-3 hover:bg-primary/5 transition-colors cursor-pointer group">
+                    <span
+                        class="material-symbols-outlined text-4xl text-[#616f89] group-hover:text-primary">upload_file</span>
+                    <div>
+                        <p class="text-[#111318] dark:text-white font-semibold">Clique para fazer upload ou arraste o
+                            arquivo</p>
+                        <p class="text-[#616f89] dark:text-gray-400 text-xs">Tamanho máximo: 10MB por arquivo</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Action Footer -->
+            <div
+                class="p-6 bg-background-light dark:bg-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
+                <label class="flex items-center gap-3 cursor-pointer">
+                    <input
+                        class="rounded text-primary focus:ring-primary border-[#dbdfe6] dark:border-gray-600 dark:bg-gray-700"
+                        type="checkbox" />
+                    <span class="text-sm text-[#616f89] dark:text-gray-300">Declaro que li e aceito os <a
+                            class="text-primary font-bold underline" href="#">Termos de Credenciamento</a>.</span>
+                </label>
+                <div class="flex gap-4 w-full md:w-auto">
+                    <button
+                        class="flex-1 md:min-w-[120px] rounded-lg h-12 px-6 border border-[#dbdfe6] dark:border-gray-600 text-[#111318] dark:text-white font-bold text-sm hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">Voltar</button>
+                    <button
+                        class="flex-1 md:min-w-[200px] rounded-lg h-12 px-8 bg-primary text-white font-bold text-sm shadow-lg hover:bg-green-700 transition-colors">Finalizar
+                        Cadastro</button>
+                </div>
+            </div>
+        </div>
+        <!-- Support Info -->
+        <div class="mt-8 flex justify-center gap-8 text-[#616f89] dark:text-gray-500 text-sm">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">lock</span>
+                Dados Criptografados
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">verified_user</span>
+                Ambiente Seguro
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">support_agent</span>
+                Suporte 24/7
+            </div>
+        </div>
+    </main>
+    <footer class="mt-20 py-10 border-t border-[#f0f4f2] dark:border-[#1e2b22] text-center text-[#63886f] text-sm">
+        <div class="flex items-center justify-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-primary">verified_user</span>
+            <span class="font-bold">salvus.pet — Plataforma 100% Auditada</span>
+        </div>
+        <p>© 2026 salvuspet.</p>
+    </footer>
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+        <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+        <nav id="menu-content"
+            class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+            <div class="flex flex-col h-full p-8 leading-loose">
+                <div class="flex justify-end mb-8">
+                    <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                </div>
+                <div class="flex flex-col gap-6 text-lg font-bold">
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Início</a>
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Sobre</a>
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Ajuda</a>
+                    <a href="#"
+                        class="text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Entrar</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuContent = document.getElementById('menu-content');
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                menuContent.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMenu() {
+            menuContent.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        // Dark Mode Logic
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        const themeIcons = document.querySelectorAll('.theme-icon');
+        const htmlElement = document.documentElement;
+
+        function updateIcons(isDark) {
+            themeIcons.forEach(icon => {
+                icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            });
+        }
+
+        // Check local storage or system preference
+        function checkTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                updateIcons(true);
+            } else {
+                htmlElement.classList.add('light');
+                htmlElement.classList.remove('dark');
+                updateIcons(false);
+            }
+        }
+
+        checkTheme();
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    htmlElement.classList.add('light');
+                    localStorage.theme = 'light';
+                    updateIcons(false);
+                } else {
+                    htmlElement.classList.remove('light');
+                    htmlElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    updateIcons(true);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

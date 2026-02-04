@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png"
+        href="https://cdn.discordapp.com/attachments/1447387480146972815/1465398920845725867/20260124_165456_0000.png?ex=6978f698&is=6977a518&hm=ec3f5e93305d2f2da759b11a0f716da6aba9805eee5095929edcb7769b4ce842&" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>salvus.pet - Detalhes e Transparência (2026)</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-[#111813] dark:text-white antialiased transition-colors duration-300 font-display">
+    <div class="relative flex min-h-screen flex-col">
+        <header
+            class="sticky top-0 z-50 w-full border-b border-solid border-[#dce5df] dark:border-[#2a4030] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-40 py-1">
+            <div class="flex items-center justify-between max-w-[1200px] mx-auto">
+                <div class="flex items-center flex-shrink-0">
+                    <a href="../fluxo_principal/code.html">
+                        <img src="https://cdn.discordapp.com/attachments/1447387480146972815/1465524803707605064/salvuspet_Logotipo_20260126_225159_0000.png?ex=69796bd5&is=69781a55&hm=2e52ad315d05e694757ee41e9b74cce83e00de91612790e0114ab6498c65ba67&"
+                            alt="SalvusPet Logo"
+                            class="h-16 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+                    </a>
+                </div>
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Casos</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Sobre Nós</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Transparência</a>
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                </nav>
+                <div class="flex items-center gap-2 md:hidden">
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                    <button id="menu-toggle" class="text-2xl material-symbols-outlined p-2">menu</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+            <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+            <nav id="menu-content"
+                class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+                <div class="flex flex-col h-full p-8 leading-loose">
+                    <div class="flex justify-end mb-8">
+                        <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                    </div>
+                    <div class="flex flex-col gap-6 text-lg font-bold">
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Casos</a>
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Sobre
+                            Nós</a>
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Transparência</a>
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Contato</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="max-w-[1200px] mx-auto px-4 py-6">
+            <div class="flex flex-wrap gap-2 py-4">
+                <a class="text-[#63886f] text-sm font-medium flex items-center gap-1" href="#"><span
+                        class="material-symbols-outlined text-sm">home</span> Início</a>
+                <span class="text-[#63886f] text-sm">/</span>
+                <a class="text-[#63886f] text-sm font-medium" href="#">Casos Urgentes</a>
+                <span class="text-[#63886f] text-sm">/</span>
+                <span class="text-[#111813] dark:text-white text-sm font-bold">Detalhes do Max</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-8">
+                    <section class="space-y-4">
+                        <div class="relative group">
+                            <div class="bg-cover bg-center rounded-xl min-h-[400px] md:min-h-[500px] shadow-lg"
+                                data-alt="Main photo of a rescued dog looking at camera"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD5vNrAig9oGbnCi_Ct5POUoQSKpL6NLWMBUI-PmkVA3DigspL8wZ7Ul1AfFSAY6f9SyZVxXvw2PO4ROLbiFlHqcL8nRcjLLe3nBdjQ81B7I8capZJT6SRpazkRw3fOhmO6j_Km4U6EtBpIsxkIRpI_xhkIUWLw85T5HSVe3pyh1gbOAIUBYS9IuTLtpxE1TGJs72eG_TEv6YGGkM_PDl-g-YG6a0V7wEplFBUftZ_TqJZmX638KgWeAg86_ixwiCMsu4vCKBLLnzvq");'>
+                                <div
+                                    class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+                                    <span class="size-2 bg-white rounded-full animate-pulse"></span> Urgente
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex overflow-x-auto hide-scrollbar gap-3 pb-2">
+                            <div class="flex-shrink-0 w-32 aspect-video rounded-lg border-2 border-primary cursor-pointer bg-cover bg-center"
+                                data-alt="Close up of Max"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBeiha3xcUeom3VdPwCrLYqGO_-n7c8i515oh68u-xI2jyfklK4R4lOKpNaL0WutQ-5j1vJPPLL90SDNQRP-SIrzGTzKAdZTdIpKYjEH9LfHbQCQfvFT853HzscdmPKqgHb67YAtzW0fQD4aoUzJe_7F7RvVJz4faDjICDByWeeW0qZAT5kzNANjfu3cFOY2hM1gV8Y5cbOlq8ZB4jkktdTAER5XIKoLtgv3k-ITmefCzl2Ho1e9WStJjJp-XIpiySZe3uK0-wS_D-C");'>
+                            </div>
+                            <div class="flex-shrink-0 w-32 aspect-video rounded-lg cursor-pointer bg-cover bg-center grayscale hover:grayscale-0 transition-all"
+                                data-alt="Max at the clinic"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDpJZ4SeW23HcMm4_IgXmdS4t2LmgX2bqtcO7Ig1qWj0hbt-u40OFCnAl-I2R6OLmdTlLi7cF6pkRz-qffCzuLf3qh340w-m3nrabTjIYksjUK8ffH1eughlnGJQkL-ScEcFpk1_OW1VZ36Nz4-4vctaz2d3wJQ_G0c8kdqLcfMaKN9wk-sWQJFzrOCMzQCxqhWUHLG9dZ0g0CY__cfQYuCnVzdlbuRtTRtc0GuPPdaQXH0qAcaIdFO2aE4l1-oFXCPP-_wUYr5kLB0");'>
+                            </div>
+                            <div class="flex-shrink-0 w-32 aspect-video rounded-lg cursor-pointer bg-cover bg-center grayscale hover:grayscale-0 transition-all"
+                                data-alt="Max recovery photo"
+                                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQacKNnUnTJf21u0RQHrkVaDLM4JA8GDmHT4rtd2E-rFNW0Y8CPowruGOR2-tmChYGFkODKs9IU5-iJET6kXmOn28XSaI0PaXCVAkV8oWvGa4lrDaXRowGXbojv6AkMV6djmTODq_lrzcwy2zkOummdV116uVCVYy9VQa35drhm4uDZCec-hR-QIWONZt1SGgd5PiIIi3yHLL2ak-ruGr4YbzZPqyxmz7uBjCPim9kE0vsPbPyNPDCZrwCMXJe_y8R1q5z2I3IMmq_");'>
+                            </div>
+                            <div
+                                class="flex-shrink-0 w-32 aspect-video rounded-lg bg-[#f0f4f2] dark:bg-[#1e2b22] flex flex-col items-center justify-center text-[#63886f] cursor-pointer">
+                                <span class="material-symbols-outlined">add_a_photo</span>
+                                <span class="text-[10px] font-bold uppercase">+12 Fotos</span>
+                            </div>
+                        </div>
+                    </section>
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">verified</span> Verificado
+                            </span>
+                            <span
+                                class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 dark:bg-blue-900/30 dark:text-blue-300">
+                                <span class="material-symbols-outlined text-xs">location_on</span> Camaçari, BA
+                            </span>
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Ajude o Max:
+                            Resgate e
+                            Cirurgia de Emergência</h1>
+                        <p class="text-[#63886f] text-lg leading-relaxed">Max foi encontrado atropelado no Centro em 10
+                            Jan 2026. Ele apresenta fraturas múltiplas e precisa de uma cirurgia ortopédica urgente para
+                            não
+                            perder os movimentos das patas traseiras.</p>
+                    </div>
+                    <section
+                        class="bg-white dark:bg-[#112116] p-6 rounded-xl border border-[#f0f4f2] dark:border-[#1e2b22] shadow-sm">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">analytics</span> Jornada Médica
+                        </h3>
+                        <div class="space-y-6">
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="size-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                        <span class="material-symbols-outlined text-sm">check</span>
+                                    </div>
+                                    <div class="w-0.5 h-full bg-primary"></div>
+                                </div>
+                                <div class="pb-6">
+                                    <p class="text-sm font-bold text-primary">12 Jan, 2026</p>
+                                    <p class="font-bold">Resgate Realizado</p>
+                                    <p class="text-sm text-[#63886f] mb-3">Equipe SOS Pets resgatou Max e prestou os
+                                        primeiros
+                                        socorros em campo.</p>
+                                    <div
+                                        class="flex items-center gap-2 px-3 py-1.5 bg-background-light dark:bg-[#1a2e21] rounded-lg border border-[#f0f4f2] dark:border-[#1e2b22] group cursor-pointer hover:border-primary transition-colors max-w-fit">
+                                        <span class="material-symbols-outlined text-primary text-lg">receipt_long</span>
+                                        <span class="text-[10px] font-bold uppercase">Nota 01 (01/2026)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="size-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                        <span class="material-symbols-outlined text-sm">check</span>
+                                    </div>
+                                    <div class="w-0.5 h-full bg-primary"></div>
+                                </div>
+                                <div class="pb-6">
+                                    <p class="text-sm font-bold text-primary">13 Jan, 2026</p>
+                                    <p class="font-bold">Exames e Diagnóstico</p>
+                                    <p class="text-sm text-[#63886f] mb-3">Raio-X e exames de sangue concluídos na
+                                        clínica
+                                        parceira.</p>
+                                    <div class="flex flex-wrap gap-2">
+                                        <div
+                                            class="flex items-center gap-2 px-3 py-1.5 bg-background-light dark:bg-[#1a2e21] rounded-lg border border-[#f0f4f2] dark:border-[#1e2b22] group cursor-pointer hover:border-primary transition-colors">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-lg">radiology</span>
+                                            <span class="text-[10px] font-bold uppercase">Raio-X 13 Jan</span>
+                                        </div>
+                                        <div
+                                            class="flex items-center gap-2 px-3 py-1.5 bg-background-light dark:bg-[#1a2e21] rounded-lg border border-[#f0f4f2] dark:border-[#1e2b22] group cursor-pointer hover:border-primary transition-colors">
+                                            <span class="material-symbols-outlined text-primary text-lg">vaccines</span>
+                                            <span class="text-[10px] font-bold uppercase">Vacinas 2026</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="size-8 rounded-full bg-primary flex items-center justify-center text-white">
+                                        <span class="material-symbols-outlined text-sm">check</span>
+                                    </div>
+                                    <div class="w-0.5 h-full bg-primary"></div>
+                                </div>
+                                <div class="pb-6">
+                                    <p class="text-sm font-bold text-primary">15 Jan, 2026</p>
+                                    <p class="font-bold">Laudo Médico Emitido</p>
+                                    <p class="text-sm text-[#63886f] mb-3">O laudo ortopédico confirma a necessidade de
+                                        cirurgia imediata.</p>
+                                    <div
+                                        class="flex items-center gap-2 px-3 py-1.5 bg-background-light dark:bg-[#1a2e21] rounded-lg border border-[#f0f4f2] dark:border-[#1e2b22] group cursor-pointer hover:border-primary transition-colors max-w-fit">
+                                        <span class="material-symbols-outlined text-primary text-lg">description</span>
+                                        <span class="text-[10px] font-bold uppercase">Laudo Completo PDF</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="size-8 rounded-full border-2 border-primary bg-white dark:bg-background-dark flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined text-sm">medical_services</span>
+                                    </div>
+                                    <div class="w-0.5 h-full bg-gray-200 dark:bg-gray-800"></div>
+                                </div>
+                                <div class="pb-6">
+                                    <p class="text-sm font-bold text-primary italic flex items-center gap-1">
+                                        <span class="size-2 bg-primary rounded-full animate-pulse"></span> AGUARDANDO
+                                        FUNDOS
+                                        (PREVISÃO: 02/2026)
+                                    </p>
+                                    <p class="font-bold">Cirurgia Ortopédica</p>
+                                    <p class="text-sm text-[#63886f]">Procedimento agendado para colocação de placa e
+                                        pinos
+                                        no fêmur.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="flex flex-col items-center">
+                                    <div
+                                        class="size-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400">
+                                        <span class="material-symbols-outlined text-sm">home_health</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-gray-400">Próximo Passo (Previsto: 03/2026)</p>
+                                    <p class="font-bold text-gray-400">Fisioterapia e Recuperação</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                </div>
+                <aside class="lg:col-span-1">
+                    <div class="sticky top-24 space-y-6">
+                        <div class="bg-white dark:bg-background-dark p-6 rounded-xl border-4 border-primary shadow-xl">
+                            <div class="flex justify-between items-end mb-4">
+                                <div>
+                                    <p class="text-sm font-medium text-[#63886f]">Arrecadado até 20/01/2026</p>
+                                    <p class="text-3xl font-black">R$ 1.450</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium text-[#63886f]">Meta 2026</p>
+                                    <p class="text-xl font-bold opacity-60">R$ 3.800</p>
+                                </div>
+                            </div>
+                            <div class="w-full bg-[#f0f4f2] dark:bg-gray-800 h-4 rounded-full mb-6 overflow-hidden">
+                                <div class="bg-primary h-full rounded-full" style="width: 38%"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mb-6">
+                                <div class="bg-background-light dark:bg-[#112116] p-3 rounded-lg text-center">
+                                    <p class="text-xs font-bold text-[#63886f] uppercase">Doadores</p>
+                                    <p class="text-lg font-bold">42</p>
+                                </div>
+                                <div class="bg-background-light dark:bg-[#112116] p-3 rounded-lg text-center">
+                                    <p class="text-xs font-bold text-[#63886f] uppercase">Vence em</p>
+                                    <p class="text-lg font-bold">15 Fev 2026</p>
+                                </div>
+                            </div>
+                            <button
+                                class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-full font-black text-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined font-bold">favorite</span> DOAR PARA ESTE CASO
+                            </button>
+                            <div class="mt-4 flex gap-2">
+                                <button
+                                    class="flex-1 border-2 border-[#f0f4f2] dark:border-[#1e2b22] py-2 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">share</span> Compartilhar
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-[#112116] p-6 rounded-xl border border-[#f0f4f2] dark:border-[#1e2b22]">
+                            <div class="flex justify-between items-start mb-4">
+                                <h4 class="font-black text-sm uppercase tracking-widest flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-sm">payments</span> Log
+                                    Financeiro 2026
+                                </h4>
+                                <span
+                                    class="text-[10px] font-bold text-primary px-2 py-0.5 bg-primary/10 rounded">Jan/2026</span>
+                            </div>
+                            <ul class="space-y-3">
+                                <li class="flex justify-between text-sm">
+                                    <span class="text-[#63886f]">Cirurgia (Prevista 02/26)</span>
+                                    <span class="font-bold">R$ 2.500</span>
+                                </li>
+                                <li class="flex justify-between text-sm">
+                                    <span class="text-[#63886f]">Medicamentos (Jan/26)</span>
+                                    <span class="font-bold">R$ 450</span>
+                                </li>
+                                <li class="flex justify-between text-sm">
+                                    <span class="text-[#63886f]">Internação (Jan/26)</span>
+                                    <span class="font-bold">R$ 600</span>
+                                </li>
+                                <li class="flex justify-between text-sm">
+                                    <span class="text-[#63886f]">Exames (13 Jan 2026)</span>
+                                    <span class="font-bold">R$ 250</span>
+                                </li>
+                                <hr class="border-[#f0f4f2] dark:border-[#1e2b22]" />
+                                <li class="flex justify-between text-sm">
+                                    <span class="text-[#111813] dark:text-white font-black">Total Previsto 2026</span>
+                                    <span class="font-black text-primary">R$ 3.800</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div
+                            class="p-6 bg-primary/5 rounded-xl border-2 border-dashed border-primary/20 flex items-center gap-4">
+                            <div class="size-12 rounded-full bg-primary/20 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-primary">foundation</span>
+                            </div>
+                            <div>
+                                <p class="text-xs font-bold uppercase text-primary">ONG Responsável</p>
+                                <p class="font-bold">Amigos de Patas Camaçari</p>
+                                <p class="text-[10px] text-[#63886f]">Certificação Ativa 2026</p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+        <footer class="mt-20 py-10 border-t border-[#f0f4f2] dark:border-[#1e2b22] text-center text-[#63886f] text-sm">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <span class="material-symbols-outlined text-primary">verified_user</span>
+                <span class="font-bold">salvus.pet — Plataforma 100% Auditada</span>
+            </div>
+            <p>© 2026 salvuspet.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuContent = document.getElementById('menu-content');
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                menuContent.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMenu() {
+            menuContent.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Dark Mode Logic
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        const themeIcons = document.querySelectorAll('.theme-icon');
+        const htmlElement = document.documentElement;
+
+        function updateIcons(isDark) {
+            themeIcons.forEach(icon => {
+                icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            });
+        }
+
+        // Check local storage or system preference
+        function checkTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                updateIcons(true);
+            } else {
+                htmlElement.classList.add('light');
+                htmlElement.classList.remove('dark');
+                updateIcons(false);
+            }
+        }
+
+        checkTheme();
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    htmlElement.classList.add('light');
+                    localStorage.theme = 'light';
+                    updateIcons(false);
+                } else {
+                    htmlElement.classList.remove('light');
+                    htmlElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    updateIcons(true);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

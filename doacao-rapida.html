@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>salvus.pet - Fluxo de Doação Rápida</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="icon" type="image/png"
+        href="./assets/logo2.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                    borderRadius: { "DEFAULT": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark h-svh overflow-hidden flex flex-col font-display">
+    <header class="flex items-center justify-between border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-6 md:px-40 py-3 sticky top-0 z-50">
+        <div class="flex items-center text-gray-900 dark:text-gray-900 flex-shrink-0">
+            <a href="index.html">
+                <img src="./assets/logo.png"
+                    alt="SalvusPet Logo" class="h-10 sm:h-14 w-auto drop-shadow-lg transition-transform hover:scale-105 duration-300">
+            </a>
+        </div>
+        <div class="flex gap-3">
+        </div>
+    </header>
+    <main class="flex-1 min-h-0 flex flex-col items-center justify-center p-2 sm:p-4">
+        <div class="w-full max-w-[500px] bg-white dark:bg-gray-900 rounded-xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-800 flex flex-col max-h-[95vh] sm:max-h-none">
+            <div class="p-4 sm:p-6 space-y-3 sm:space-y-4 overflow-y-auto sm:overflow-visible flex-1">
+                <div class="space-y-1.5 mb-2">
+                    <div class="flex justify-between items-center">
+                        <p class="text-[10px] font-black uppercase tracking-wider text-primary">Progresso</p>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Passo 1 de 2</p>
+                    </div>
+                    <div class="rounded-full bg-gray-100 dark:bg-gray-800 h-1.5 overflow-hidden">
+                        <div class="h-full rounded-full bg-primary transition-all duration-500" data-progress="50" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h1 class="text-gray-900 dark:text-white text-lg sm:text-3xl font-extrabold tracking-tight">Quanto deseja doar?</h1>
+                </div>
+                <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                    <button onclick="selectAmount(20)" id="btn-20" class="amount-btn flex flex-col items-center justify-center py-2 sm:py-4 px-2 rounded-xl border-2 border-gray-100 dark:border-gray-800 hover:border-primary/50 text-gray-900 dark:text-white transition-all bg-gray-50 dark:bg-gray-800/50">
+                        <span class="text-[8px] sm:text-xs font-bold uppercase mb-0.5 sm:mb-1 opacity-50">Impacto</span>
+                        <span class="text-base sm:text-xl font-extrabold">R$ 20</span>
+                    </button>
+                    <button onclick="selectAmount(50)" id="btn-50" class="amount-btn flex flex-col items-center justify-center py-2 sm:py-4 px-2 rounded-xl border-2 border-gray-100 dark:border-gray-800 hover:border-primary/50 text-gray-900 dark:text-white transition-all bg-gray-50 dark:bg-gray-800/50">
+                        <span class="text-[8px] sm:text-xs font-bold uppercase mb-0.5 sm:mb-1 opacity-50">Cuidado</span>
+                        <span class="text-base sm:text-xl font-extrabold">R$ 50</span>
+                    </button>
+                    <button onclick="selectAmount(100)" id="btn-100" class="amount-btn flex flex-col items-center justify-center py-2 sm:py-4 px-2 rounded-xl border-2 border-gray-100 dark:border-gray-800 hover:border-primary/50 text-gray-900 dark:text-white transition-all bg-gray-50 dark:bg-gray-800/50">
+                        <span class="text-[8px] sm:text-xs font-bold uppercase mb-0.5 sm:mb-1 opacity-50">Resgate</span>
+                        <span class="text-base sm:text-xl font-extrabold">R$ 100</span>
+                    </button>
+                </div>
+                <div class="space-y-1">
+                    <label class="block text-[10px] sm:text-sm font-bold text-gray-700 dark:text-gray-300 ml-1">Outro valor
+                        <div class="relative flex items-center">
+                            <span class="absolute left-4 text-gray-400 font-bold">R$</span>
+                            <input id="custom-amount" class="w-full pl-10 pr-12 py-2 sm:py-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-lg font-bold" placeholder="0,00" type="text" />
+                            <div class="absolute right-4 text-gray-400">
+                                <span class="material-symbols-outlined text-sm sm:text-base"></span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            
+                <button id="donate-btn" onclick="processDonation()" disabled class="w-full bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-400 py-3 sm:py-4 rounded-xl text-base sm:text-lg font-extrabold shadow-lg transition-all flex items-center justify-center gap-2 cursor-not-allowed">
+                    Selecione um valor
+                </button>
+            </div>
+            
+            <!-- Footer: Campanha Info + Badges de Segurança -->
+            <div class="bg-gray-50 dark:bg-gray-800/50 px-4 sm:px-6 py-3 sm:py-4 space-y-3">
+                <!-- Card da Campanha -->
+                <div class="bg-white dark:bg-gray-900 rounded-xl p-3 sm:p-4 border border-gray-200 dark:border-gray-700">
+                    <p class="text-[10px] font-bold text-primary uppercase tracking-wider mb-2">Você está doando para:</p>
+                    <div class="flex items-center gap-3">
+                        <div class="size-12 sm:size-14 rounded-lg bg-cover bg-center flex-shrink-0 border-2 border-primary/20"
+                            style="background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=200&h=200&fit=crop');">
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <h4 class="text-sm sm:text-base font-black text-gray-900 dark:text-white truncate">Rex: Cirurgia de Emergência</h4>
+                            <p class="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 flex items-center gap-1 mt-0.5">
+                                <span class="material-symbols-outlined text-xs"></span>
+                                Cirurgia Ortopédica • Meta: R$ 6.000
+                            </p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <div class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary rounded-full" style="width: 70%"></div>
+                                </div>
+                                <span class="text-[10px] font-bold text-primary">70%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges de Segurança -->
+                <div class="flex items-center justify-center gap-6 sm:gap-8 opacity-40">
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-base sm:text-xl text-gray-600 dark:text-gray-400"></span>
+                        <span class="text-[8px] text-gray-500 dark:text-gray-500">Seguro</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-base sm:text-xl text-gray-600 dark:text-gray-400"></span>
+                        <span class="text-[8px] text-gray-500 dark:text-gray-500">SSL</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="material-symbols-outlined text-base sm:text-xl text-gray-600 dark:text-gray-400"></span>
+                        <span class="text-[8px] text-gray-500 dark:text-gray-500">Transparente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="py-4 text-center text-gray-400 text-[10px] sm:text-xs">
+        <p>© 2026 salvuspet.</p>
+    </footer>
+
+    <script>
+        let selectedAmount = 0;
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            
+            // Reset all buttons
+            document.querySelectorAll('.amount-btn').forEach(btn => {
+                btn.classList.remove('border-primary', 'bg-primary/10');
+                btn.classList.add('border-gray-100', 'dark:border-gray-800', 'bg-gray-50', 'dark:bg-gray-800/50');
+            });
+            
+            // Highlight selected
+            const btn = document.getElementById(`btn-${amount}`);
+            btn.classList.remove('border-gray-100', 'dark:border-gray-800', 'bg-gray-50', 'dark:bg-gray-800/50');
+            btn.classList.add('border-primary', 'bg-primary/10');
+            
+            // Clear custom input
+            document.getElementById('custom-amount').value = '';
+            
+            // Enable button
+            updateDonateButton();
+        }
+
+        function updateDonateButton() {
+            const btn = document.getElementById('donate-btn');
+            if (selectedAmount > 0) {
+                btn.disabled = false;
+                btn.classList.remove('bg-gray-300', 'dark:bg-gray-700', 'text-gray-500', 'dark:text-gray-400', 'cursor-not-allowed');
+                btn.classList.add('bg-primary', 'text-white', 'hover:bg-primary/90', 'cursor-pointer');
+                btn.innerHTML = `Doar R$ ${selectedAmount} <span class="material-symbols-outlined text-sm sm:text-base"></span>`;
+            }
+        }
+
+        // Custom amount input
+        document.getElementById('custom-amount').addEventListener('input', (e) => {
+            const value = parseInt(e.target.value.replace(/\D/g, ''));
+            if (value > 0) {
+                selectedAmount = value;
+                // Reset chips
+                document.querySelectorAll('.amount-btn').forEach(btn => {
+                    btn.classList.remove('border-primary', 'bg-primary/10');
+                    btn.classList.add('border-gray-100', 'dark:border-gray-800');
+                });
+                updateDonateButton();
+            }
+        });
+
+        function processDonation() {
+            if (selectedAmount > 0) {
+                handleDonation(selectedAmount);
+            }
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

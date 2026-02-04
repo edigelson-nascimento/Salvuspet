@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="./assets/logo2.png" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Verificação de Identidade do Tutor - SalvusPet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary": "#15803d", "background-light": "#f6f8f6", "background-dark": "#112116" },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                    borderRadius: { "DEFAULT": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111813] dark:text-white antialiased transition-colors duration-300">
+    <div class="relative flex min-h-screen flex-col">
+        <header class="sticky top-0 z-50 w-full border-b border-solid border-[#dce5df] dark:border-[#2a4030] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-40 py-1">
+            <div class="flex items-center justify-between max-w-[1200px] mx-auto">
+                <div class="flex items-center flex-shrink-0">
+                    <a href="index.html">
+                        <img src="./assets/logo.png" alt="SalvusPet Logo" class="h-16 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+                    </a>
+                </div>
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="dashboard-protetor.html">Como funciona</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Transparência</a>
+                    <a class="text-sm font-semibold text-primary" href="#">Verificação</a>
+                    <button class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                </nav>
+                <div class="flex items-center gap-2 md:hidden">
+                    <button class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                    <button id="menu-toggle" class="text-2xl material-symbols-outlined p-2">menu</button>
+                </div>
+            </div>
+        </header>
+
+        <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+            <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+            <nav id="menu-content" class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+                <div class="flex flex-col h-full p-8 leading-loose">
+                    <div class="flex justify-end mb-8">
+                        <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                    </div>
+                    <div class="flex flex-col gap-6 text-lg font-bold">
+                        <a href="dashboard-protetor.html" class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Como funciona</a>
+                        <a href="#" class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Transparência</a>
+                        <a href="#" class="text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Verificação</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <main class="flex-1 flex justify-center py-10 px-4">
+            <div class="max-w-[800px] w-full flex flex-col gap-6">
+                <div class="p-4">
+                    <div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#1a2e20] p-6 md:flex-row md:items-center">
+                        <div class="flex flex-col gap-1">
+                            <p class="text-[#111813] dark:text-white text-base font-bold leading-tight">Status da Verificação</p>
+                            <p class="text-[#63886f] dark:text-gray-400 text-base font-normal leading-normal">Seu perfil está atualmente aguardando o envio de documentos.</p>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-100 text-yellow-700 font-semibold text-sm">
+                            <span class="material-symbols-outlined text-sm">schedule</span>
+                            Pendente
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center px-4">
+                    <h1 class="text-[#111813] dark:text-white tracking-light text-[32px] font-bold leading-tight pb-2">Verificação de Identidade do Tutor</h1>
+                    <p class="text-[#63886f] dark:text-gray-400 text-base font-normal max-w-2xl mx-auto">
+                        Para garantir a transparência e segurança de todos os animais na plataforma, precisamos verificar sua identidade antes de habilitar processos de adoção.
+                    </p>
+                </div>
+                <div class="p-4">
+                <div class="flex flex-col gap-3 p-4 bg-white dark:bg-[#1a2e20] rounded-xl border border-gray-200 dark:border-gray-800">
+                    <div class="flex gap-6 justify-between">
+                        <p class="text-[#111813] dark:text-white text-base font-bold leading-normal">Progresso da Verificação</p>
+                        <p class="text-primary text-sm font-bold leading-normal" id="progress-percentage">0%</p>
+                    </div>
+                    <div class="rounded-full bg-gray-100 dark:bg-gray-800 h-2.5 overflow-hidden">
+                        <div class="h-full rounded-full bg-primary transition-all duration-500" id="progress-bar" data-progress="0" style="width: 0%;"></div>
+                    </div>
+                    <p class="text-[#63886f] dark:text-gray-400 text-sm font-medium leading-normal flex items-center gap-2">
+                        <span class="bg-primary/20 text-primary px-2 py-0.5 rounded text-xs">Passo <span id="current-step">1</span> de 3</span>
+                        <span id="step-description">Documento de Identidade (Frente)</span>
+                    </p>
+                </div>
+            </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
+                    <div class="flex flex-col gap-4 md:col-span-2">
+                        <!-- Upload Step 1: RG/CNH Front -->
+                        <div class="bg-white dark:bg-[#1a2e20] p-6 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col gap-4" id="step-1">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                                    <span class="material-symbols-outlined">badge</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#111813] dark:text-white">RG ou CNH (Frente)</h3>
+                            </div>
+                            <div onclick="document.getElementById('file-1').click();" class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-10 flex flex-col items-center justify-center gap-4 hover:border-primary transition-colors cursor-pointer group">
+                                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-full group-hover:bg-primary/10 transition-colors">
+                                    <span class="material-symbols-outlined text-4xl text-gray-400 group-hover:text-primary">cloud_upload</span>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-[#111813] dark:text-white font-semibold">Clique para fazer upload ou arraste</p>
+                                    <p class="text-sm text-[#63886f] dark:text-gray-400">PNG, JPG ou PDF (Máx. 5MB)</p>
+                                </div>
+                                <input type="file" id="file-1" class="hidden" accept="image/*,.pdf" onchange="handleFileUpload(this, 1)" />
+                            </div>
+                            <div id="preview-1" class="hidden mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center gap-3">
+                                <span class="material-symbols-outlined text-green-600">check_circle</span>
+                                <span class="text-sm font-medium text-green-800 dark:text-green-300">Documento enviado com sucesso!</span>
+                            </div>
+                        </div>
+
+                        <!-- Upload Step 2: RG/CNH Verso -->
+                        <div class="bg-white dark:bg-[#1a2e20] p-6 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col gap-4 opacity-60" id="step-2">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg text-gray-400">
+                                    <span class="material-symbols-outlined">badge</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#111813] dark:text-white">RG ou CNH (Verso)</h3>
+                                <span class="ml-auto text-xs font-medium text-gray-400 uppercase">Aguardando passo anterior</span>
+                            </div>
+                            <div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-10 flex flex-col items-center justify-center gap-4">
+                                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-full">
+                                    <span class="material-symbols-outlined text-4xl text-gray-400">cloud_upload</span>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-[#111813] dark:text-white font-semibold">Clique para fazer upload ou arraste</p>
+                                    <p class="text-sm text-[#63886f] dark:text-gray-400">PNG, JPG ou PDF (Máx. 5MB)</p>
+                                </div>
+                                <input type="file" id="file-2" class="hidden" accept="image/*,.pdf" onchange="handleFileUpload(this, 2)" />
+                            </div>
+                            <div id="preview-2" class="hidden mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center gap-3">
+                                <span class="material-symbols-outlined text-green-600">check_circle</span>
+                                <span class="text-sm font-medium text-green-800 dark:text-green-300">Documento enviado com sucesso!</span>
+                            </div>
+                        </div>
+
+                        <!-- Upload Step 3: Comprovante -->
+                        <div class="bg-white dark:bg-[#1a2e20] p-6 rounded-xl border border-gray-200 dark:border-gray-800 flex flex-col gap-4 opacity-60" id="step-3">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg text-gray-400">
+                                    <span class="material-symbols-outlined">home_pin</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-[#111813] dark:text-white">Comprovante de Residência</h3>
+                            </div>
+                            <div class="border-2 border-dashed border-gray-300 dark:border-gray-700 rounded-xl p-10 flex flex-col items-center justify-center gap-4">
+                                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-full">
+                                    <span class="material-symbols-outlined text-4xl text-gray-400">cloud_upload</span>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-[#111813] dark:text-white font-semibold">Clique para fazer upload ou arraste</p>
+                                    <p class="text-sm text-[#63886f] dark:text-gray-400">PNG, JPG ou PDF (Máx. 5MB)</p>
+                                </div>
+                                <input type="file" id="file-3" class="hidden" accept="image/*,.pdf" onchange="handleFileUpload(this, 3)" />
+                            </div>
+                            <div id="preview-3" class="hidden mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg flex items-center gap-3">
+                                <span class="material-symbols-outlined text-green-600">check_circle</span>
+                                <span class="text-sm font-medium text-green-800 dark:text-green-300">Documento enviado com sucesso!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 p-6 rounded-xl flex flex-col gap-4">
+                            <h4 class="font-bold text-primary flex items-center gap-2">
+                                <span class="material-symbols-outlined">shield</span>
+                                Por que verificar?
+                            </h4>
+                            <ul class="flex flex-col gap-3">
+                                <li class="flex gap-3 text-sm text-[#111813] dark:text-gray-300">
+                                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    <span><strong>Confiança:</strong> Demonstra comprometimento com a causa animal.</span>
+                                </li>
+                                <li class="flex gap-3 text-sm text-[#111813] dark:text-gray-300">
+                                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    <span><strong>Segurança:</strong> Previne fraudes e abandonos no sistema.</span>
+                                </li>
+                                <li class="flex gap-3 text-sm text-[#111813] dark:text-gray-300">
+                                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    <span><strong>Agilidade:</strong> Perfis verificados têm prioridade em triagens.</span>
+                                </li>
+                            </ul>
+                            <div class="pt-4 border-t border-primary/10">
+                                <p class="text-xs text-[#63886f] dark:text-gray-400 leading-relaxed italic">
+                                    "Seus dados são criptografados e utilizados exclusivamente para validação de perfil conforme a LGPD."
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white dark:bg-[#1a2e20] border border-gray-200 dark:border-gray-800 p-6 rounded-xl">
+                            <h4 class="font-bold text-[#111813] dark:text-white mb-3 text-sm">Dicas para aprovação:</h4>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-xs text-[#63886f] dark:text-gray-400">
+                                    <span class="material-symbols-outlined text-[16px]">visibility</span> Foto nítida e sem reflexos
+                                </div>
+                                <div class="flex items-center gap-2 text-xs text-[#63886f] dark:text-gray-400">
+                                    <span class="material-symbols-outlined text-[16px]">crop_free</span> Documento inteiro visível
+                                </div>
+                                <div class="flex items-center gap-2 text-xs text-[#63886f] dark:text-gray-400">
+                                    <span class="material-symbols-outlined text-[16px]">event</span> Comprovante atualizado (&lt; 3 meses)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 p-4 mt-4 border-t border-gray-200 dark:border-gray-800">
+                    <button onclick="navigateTo('dashboard-protetor')" class="text-sm font-bold text-[#111813] dark:text-gray-400 hover:text-primary transition-colors flex items-center gap-2">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        Voltar para o Painel
+                    </button>
+                    <div class="flex gap-4 w-full md:w-auto">
+                        <button id="submit-btn" onclick="handleSubmit()" disabled class="flex-1 md:flex-none min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-gray-300 text-gray-500 text-base font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+                            Enviar para aprovação
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="py-6 px-10 border-t border-slate-100 dark:border-slate-800 text-center">
+            <p class="text-xs text-slate-400">© 2026 salvuspet.</p>
+        </footer>
+    </div>
+
+    <script>
+        let uploadedSteps = 0;
+
+        function handleFileUpload(input, step) {
+            const file = input.files[0];
+            if (!file) return;
+
+            // Simular upload
+            setTimeout(() => {
+                // Mostrar preview
+                document.getElementById(`preview-${step}`).classList.remove('hidden');
+
+                // Incrementar progresso
+                uploadedSteps++;
+                const progress = (uploadedSteps / 3) * 100;
+                
+                document.getElementById('progress-bar').style.width = progress + '%';
+                document.getElementById('progress-percentage').textContent = Math.round(progress) + '%';
+                document.getElementById('current-step').textContent = uploadedSteps + 1;
+
+                // Habilitar próximo passo
+                if (step < 3) {
+                    const nextStep = document.getElementById(`step-${step + 1}`);
+                    nextStep.classList.remove('opacity-60');
+                    nextStep.querySelector('input[type="file"]').disabled = false;
+                    nextStep.onclick = () => nextStep.querySelector('input[type="file"]').click();
+
+                    // Atualizar descrição
+                    const descriptions = {
+                        2: 'Documento de Identidade (Verso)',
+                        3: 'Comprovante de Residência'
+                    };
+                    document.getElementById('step-description').textContent = descriptions[step + 1];
+                }
+
+                // Se todos concluídos, habilitar envio
+                if (uploadedSteps === 3) {
+                    const submitBtn = document.getElementById('submit-btn');
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-gray-300', 'text-gray-500');
+                    submitBtn.classList.add('bg-primary', 'text-white', 'shadow-lg', 'shadow-primary/20');
+                }
+
+                showToast('Documento enviado com sucesso!');
+            }, 800);
+        }
+
+        function handleSubmit() {
+            showToast('Documentos enviados para aprovação!');
+            setTimeout(() => {
+                navigateTo('dashboard-protetor');
+            }, 2000);
+        }
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>

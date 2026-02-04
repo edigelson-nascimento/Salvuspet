@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png"
+        href="./assets/logo2.png" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SalvusPet - Página Inicial</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-[#111813] dark:text-white antialiased transition-colors duration-300">
+    <div class="relative flex min-h-screen flex-col">
+        <header
+            class="sticky top-0 z-50 w-full border-b border-solid border-[#dce5df] dark:border-[#2a4030] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-40 py-1">
+            <div class="flex items-center justify-between max-w-[1200px] mx-auto">
+                <div class="flex items-center flex-shrink-0">
+                    <img src="./assets/logo.png"
+                        alt="SalvusPet Logo"
+                        class="h-16 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+                </div>
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#como-funciona">Contato</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#transparencia">Destaque</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="index.html">Log-in/Sign-up</a>
+                    <button onclick="navigateTo('doar')"
+                        class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all transform active:scale-95 shadow-lg shadow-primary/20">
+                        Doar agora
+                    </button>
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                </nav>
+                <div class="flex items-center gap-2 md:hidden">
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                    <button id="menu-toggle" class="text-2xl material-symbols-outlined p-2">menu</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+            <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+            <nav id="menu-content"
+                class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+                <div class="flex flex-col h-full p-8 leading-loose">
+                    <div class="flex justify-end mb-8">
+                        <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                    </div>
+                    <div class="flex flex-col gap-6 text-lg font-bold">
+                        <a href="#como-funciona"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Como
+                            funciona</a>
+                        <a href="#transparencia"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Transparência</a>
+                        <a href="#casos"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Casos
+                            Urgentes</a>
+                        <a href="index.html"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Log in / Sign up</a>
+                    </div>
+                    <div class="mt-auto">
+                        <button onclick="navigateTo('doar')"
+                            class="w-full bg-primary text-white py-4 rounded-full font-black text-lg shadow-lg shadow-primary/20 transition-all active:scale-95 text-center">
+                            Minha Doação
+                        </button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="flex-grow max-w-[1200px] mx-auto w-full px-6 py-10">
+            <section class="mb-12 text-center">
+                <h2
+                    class="text-[#111813] dark:text-white tracking-tight text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+                    Ajude a salvar uma vida hoje
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                    Conectamos doadores a animais em situações críticas. 100% transparente, 100% voltado para a cura.
+                    <span class="block mt-1 font-bold text-primary">Operação 2026 ativa.</span>
+                </p>
+            </section>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div
+                    class="bg-white dark:bg-[#1a2e20] p-6 rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                    <p class="text-sm font-medium opacity-70 mb-1">Total Arrecadado em 2026</p>
+                    <p data-animate-number class="text-3xl font-black text-primary">1245000</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#1a2e20] p-6 rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                    <p class="text-sm font-medium opacity-70 mb-1">Animais Salvos (Histórico)</p>
+                    <p data-animate-number class="text-3xl font-black text-[#111813] dark:text-white">15402</p>
+                </div>
+                <div
+                    class="bg-white dark:bg-[#1a2e20] p-6 rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                    <p class="text-sm font-medium opacity-70 mb-1">Doadores Ativos Hoje</p>
+                    <div class="flex items-center gap-2">
+                        <span class="flex -space-x-2">
+                            <div class="h-8 w-8 rounded-full border-2 border-white bg-slate-200"></div>
+                            <div class="h-8 w-8 rounded-full border-2 border-white bg-slate-300"></div>
+                            <div class="h-8 w-8 rounded-full border-2 border-white bg-slate-400"></div>
+                        </span>
+                        <p class="text-xl font-bold">+12k</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="flex-1">
+                    <!-- Search Bar -->
+                    <div class="mb-6 relative group">
+                        <input type="text" placeholder="Buscar campanha, animal ou ONG..."
+                            class="w-full pl-12 pr-4 py-3.5 rounded-2xl border-none bg-white dark:bg-[#1a2e20] ring-1 ring-[#dce5df] dark:ring-[#2a4030] shadow-sm text-[#111813] dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-primary focus:shadow-md transition-all">
+                        <span
+                            class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+                    </div>
+
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-2xl font-bold flex items-center gap-2">
+                            ⭐ Campanhas em Andamento
+                        </h3>
+                        <a class="text-sm font-bold text-primary flex items-center gap-1" href="#todas">Ver todas
+                            <span class="material-symbols-outlined text-sm">arrow_forward</span></a>
+                    </div>
+
+                    <!-- Section: Urgent -->
+                    <div class="mb-10" id="casos">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-red-500 animate-pulse">crisis_alert</span>
+                            <h4 class="text-lg font-bold text-red-500 uppercase tracking-widest">Urgência Máxima</h4>
+                        </div>
+                        <div class="space-y-6">
+                            <!-- Rex Card -->
+                            <div
+                                class="bg-white dark:bg-[#1a2e20] rounded-xl overflow-hidden shadow-xl border border-[#dce5df] dark:border-[#2a4030] transition-transform hover:scale-[1.01]">
+                                <div class="flex flex-col @xl:flex-row">
+                                    <div class="w-full @xl:w-1/2 aspect-video @xl:aspect-square bg-cover bg-center relative"
+                                        data-alt="Golden Retriever injured sitting on grass looking sad"
+                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVdFAsm3xfNPsWDbHBx5b-SZnoJaHnd2TTHZMnQ8a_rXESuEqHYW4_UdC7qb3mDqUZo9_qIVhA45qJ4hNuGrIMLIOopaPXnYKuG98ZFwmEsfuu8yQDY_82u780IaNY7vaK59GSXRYJiEN9YmdgtHMRO0D086ATvEhtsSnmNxbuCgplYKUB9baB2AXwrt86T2oFZSA42t15vctIYi9BfIKophNeBMlhCU6UxOaFo1iUnCrOnKqN17rkFWBlQUueoXBVpRTLslB--L-4')">
+                                        <div class="absolute top-4 left-4">
+                                            <span
+                                                class="bg-red-500 text-white px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-sm">emergency</span>
+                                                Cirurgia imediata
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="p-8 flex flex-col justify-between flex-1">
+                                        <div>
+                                            <div class="flex justify-between items-start mb-1">
+                                                <span
+                                                    class="text-[10px] font-bold uppercase tracking-widest opacity-50">Resgatado
+                                                    em 10 Mar 2026</span>
+                                            </div>
+                                            <h4 class="text-2xl font-black mb-3 text-[#111813] dark:text-white">Rex:
+                                                Cirurgia de Emergência</h4>
+                                            <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                                                Rex foi resgatado com uma fratura grave e precisa de cirurgia imediata
+                                                para não perder a pata. O tempo é crítico.
+                                            </p>
+                                            <div class="mb-8">
+                                                <div class="flex justify-between items-end mb-2">
+                                                    <div class="flex flex-col">
+                                                        <span class="text-sm font-bold text-primary">R$ 4.200
+                                                            arrecadados</span>
+                                                        <span class="text-xs opacity-60">Meta: R$ 6.000</span>
+                                                    </div>
+                                                    <span class="text-xl font-black">70%</span>
+                                                </div>
+                                                <div
+                                                    class="w-full h-4 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-primary rounded-full transition-all duration-1000" data-progress="70" style="width: 0%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <button onclick="navigateTo('doar')"
+                                                class="flex-1 bg-primary hover:bg-primary/90 text-white py-4 rounded-full font-black transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                                Ajudar agora <span class="material-symbols-outlined">favorite</span>
+                                            </button>
+                                            <button
+                                                class="w-12 h-12 flex items-center justify-center border border-[#dce5df] dark:border-[#2a4030] rounded-full hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <span class="material-symbols-outlined">share</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Non-Urgent -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-amber-500">healing</span>
+                            <h4 class="text-lg font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                                Em Tratamento</h4>
+                        </div>
+                        <div class="space-y-6">
+                            <!-- Luna Card -->
+                            <div
+                                class="bg-white dark:bg-[#1a2e20] rounded-xl overflow-hidden shadow-xl border border-[#dce5df] dark:border-[#2a4030] transition-transform hover:scale-[1.01]">
+                                <div class="flex flex-col @xl:flex-row">
+                                    <div class="w-full @xl:w-1/2 aspect-video @xl:aspect-square bg-cover bg-center relative"
+                                        data-alt="Scared small cat hiding behind box"
+                                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDiGTdFkI77iBEfTvAjxM-ft3ITlLYa5Vi33p2_hN2KU8hFdlCNyTrSj3KgclI5NTSEUhyHjeG10J-XIvjMhNVa3EkvK6G2TBIgnNaqO8wZSeeEB0EAG8XysjNvQxtA--oE4nR6zSzCPKu88ODV2AedSc33gS7wJEr0b4URlIhQ44IJ54hBjxpbj93sW8XLqwL7su80KvhB2wXEiYOsWqyuEk09gYNthf6Log7RR3DmRhktzNxrWr7VlCpKALrun0gtIZIEj1_PKdg3')">
+                                        <div class="absolute top-4 left-4">
+                                            <span
+                                                class="bg-amber-500 text-white px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider flex items-center gap-1">
+                                                <span class="material-symbols-outlined text-sm">medical_services</span>
+                                                Tratamento Crônico
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="p-8 flex flex-col justify-between flex-1">
+                                        <div>
+                                            <div class="flex justify-between items-start mb-1">
+                                                <span
+                                                    class="text-[10px] font-bold uppercase tracking-widest opacity-50">Resgatado
+                                                    em 05 Mar 2026</span>
+                                            </div>
+                                            <h4 class="text-2xl font-black mb-3 text-[#111813] dark:text-white">Luna:
+                                                Superando a Cinomose</h4>
+                                            <p class="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                                                Luna é uma guerreira lutando contra a cinomose. O tratamento é longo e
+                                                caro, mas ela está reagindo bem a cada dia.
+                                            </p>
+                                            <div class="mb-8">
+                                                <div class="flex justify-between items-end mb-2">
+                                                    <div class="flex flex-col">
+                                                        <span class="text-sm font-bold text-primary">R$ 1.150
+                                                            arrecadados</span>
+                                                        <span class="text-xs opacity-60">Meta: R$ 3.500</span>
+                                                    </div>
+                                                    <span class="text-xl font-black">33%</span>
+                                                </div>
+                                                <div
+                                                    class="w-full h-4 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-primary rounded-full transition-all duration-1000" data-progress="33" style="width: 0%">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-4">
+                                            <button onclick="navigateTo('doar')"
+                                                class="flex-1 bg-primary hover:bg-primary/90 text-white py-4 rounded-full font-black transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                                Ajudar agora <span class="material-symbols-outlined">favorite</span>
+                                            </button>
+                                            <button
+                                                class="w-12 h-12 flex items-center justify-center border border-[#dce5df] dark:border-[#2a4030] rounded-full hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                                <span class="material-symbols-outlined">share</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="w-full lg:w-80">
+                    <div class="sticky top-24">
+                        <div class="flex items-center gap-2 mb-6">
+                            <span class="relative flex h-3 w-3">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                            </span>
+                            <h3 class="text-xl font-bold">Doações em tempo real</h3>
+                        </div>
+                        <div class="space-y-4" id="real-time-donations">
+                            <div
+                                class="flex items-center gap-4 p-4 bg-white dark:bg-[#1a2e20] rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-sm">
+                                    MA
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="text-sm font-bold truncate">Marcos A.</p>
+                                    <p class="text-xs text-slate-500">Doou R$ 50 para Rex</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] font-bold opacity-60">há 2 mins</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-4 p-4 bg-white dark:bg-[#1a2e20] rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-[#111813] dark:text-white flex items-center justify-center font-bold text-sm">
+                                    JF
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="text-sm font-bold truncate">Juliana F.</p>
+                                    <p class="text-xs text-slate-500">Doou R$ 150 para Luna</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] font-bold opacity-60">há 8 mins</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-4 p-4 bg-white dark:bg-[#1a2e20] rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-[#111813] dark:text-white flex items-center justify-center font-bold text-sm">
+                                    RT
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="text-sm font-bold truncate">Roberto T.</p>
+                                    <p class="text-xs text-slate-500">Doou R$ 20 para Rex</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] font-bold opacity-60">há 15 mins</p>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-4 p-4 bg-white dark:bg-[#1a2e20] rounded-xl border border-[#dce5df] dark:border-[#2a4030] shadow-sm">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 text-[#111813] dark:text-white flex items-center justify-center font-bold text-sm">
+                                    CP
+                                </div>
+                                <div class="flex-1 overflow-hidden">
+                                    <p class="text-sm font-bold truncate">Carolina P.</p>
+                                    <p class="text-xs text-slate-500">Doou R$ 300 para Luna</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-[10px] font-bold opacity-60">há 24 mins</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="mt-8 bg-primary/10 p-6 rounded-xl border-2 border-dashed border-primary/30 text-center" id="transparencia">
+                            <span class="material-symbols-outlined text-primary text-4xl mb-2">verified_user</span>
+                            <p class="text-sm font-bold mb-1">Auditoria em Tempo Real</p>
+                            <p class="text-xs opacity-70">Transparência total via rastreamento imediato de todas as
+                                doações.</p>
+                            <button
+                                class="mt-4 text-xs font-black uppercase tracking-widest text-primary hover:underline">Acompanhar
+                                Auditoria</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+        <footer
+            class="bg-white dark:bg-[#0a140d] border-t border-[#dce5df] dark:border-[#2a4030] mt-20 py-12 px-6 lg:px-40">
+            <div class="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center mb-6">
+                        <div class="flex items-center">
+                            <img src="./assets/logo.png"
+                                alt="SalvusPet Logo" class="h-16 w-auto">
+                        </div>
+                    </div>
+                    <p class="text-sm opacity-60 leading-relaxed">
+                        Reescrevendo destinos, uma vida de cada vez. Junte-se à revolução SalvusPet na proteção animal
+                        em 2026.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Plataforma</h5>
+                    <ul class="space-y-4 text-sm opacity-70">
+                        <li><a class="hover:text-primary transition-colors" href="#como-funciona">Como funciona</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#transparencia">Transparência Real-time</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#casos">Casos urgentes</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#impacto">Impacto social global</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Ajuda</h5>
+                    <ul class="space-y-4 text-sm opacity-70">
+                        <li><a class="hover:text-primary transition-colors" href="#ajuda">Central de Ajuda</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="cadastro-parceiro.html">Para ONGs</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#denunciar">Denunciar caso</a></li>
+                        <li><a class="hover:text-primary transition-colors" href="#termos">Termos e Privacidade</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-6">Newsletter 2026</h5>
+                    <p class="text-sm opacity-70 mb-4">Receba atualizações semanais dos animais salvos.</p>
+                    <div class="flex gap-2">
+                        <input
+                            class="bg-slate-100 dark:bg-slate-800 border-none rounded-full px-4 py-2 w-full text-sm focus:ring-2 focus:ring-primary"
+                            placeholder="Seu email" type="email" />
+                        <button class="bg-primary p-2 rounded-full text-white hover:brightness-110 transition-all">
+                            <span class="material-symbols-outlined text-sm block">send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="max-w-[1200px] mx-auto mt-12 pt-8 border-t border-[#dce5df] dark:border-[#2a4030] text-center text-xs opacity-40">
+                © 2026 salvuspet.
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

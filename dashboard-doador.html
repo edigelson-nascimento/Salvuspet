@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard do Doador - Impacto Real</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="icon" type="image/png" href="./assets/logo2.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary": "#15803d", "background-light": "#f6f8f6", "background-dark": "#112116" },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                    borderRadius: { "DEFAULT": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-slate-100">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <header class="sticky top-0 z-50 w-full border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-40 py-1">
+                <div class="flex items-center justify-between max-w-[1200px] mx-auto w-full">
+                    <div class="flex items-center gap-8">
+                        <div class="flex items-center flex-shrink-0">
+                            <a href="index.html">
+                                <img src="./assets/logo.png" alt="SalvusPet Logo" class="h-16 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+                            </a>
+                        </div>
+                        <nav class="hidden md:flex items-center gap-8">
+                            <a class="text-slate-900 dark:text-slate-300 text-sm font-semibold hover:text-primary transition-colors" href="#">Dashboard</a>
+                            <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#historico-doacoes">Minhas Doações</a>
+                            <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="pagina-principal.html#casos">Animais Urgentes</a>
+                            <a class="text-slate-500 dark:text-slate-400 text-sm font-medium hover:text-primary transition-colors" href="#">Impacto</a>
+                        </nav>
+                    </div>
+                    <div class="flex items-center gap-2 md:gap-6">
+                        <button class="theme-toggle flex items-center justify-center rounded-full size-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+                            <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                        </button>
+                        <button class="flex items-center justify-center rounded-full size-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-colors">
+                            <span class="material-symbols-outlined">notifications</span>
+                        </button>
+                        <div class="hidden sm:block bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" style='background-image: url("https://ui-avatars.com/api/?name=Joao+Silva&background=15803d&color=fff");'></div>
+                        <button id="menu-toggle" class="md:hidden text-2xl material-symbols-outlined p-2">menu</button>
+                    </div>
+                </div>
+            </header>
+
+            <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+                <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+                <nav id="menu-content" class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+                    <div class="flex flex-col h-full p-8 leading-loose">
+                        <div class="flex justify-between items-center mb-8">
+                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" style='background-image: url("https://ui-avatars.com/api/?name=Joao+Silva&background=15803d&color=fff");'></div>
+                            <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                        </div>
+                        <div class="flex flex-col gap-6 text-lg font-bold">
+                            <a href="#" class="text-primary hover:text-primary/80 transition-colors border-b border-slate-100 dark:border-slate-800 pb-2">Dashboard</a>
+                            <a href="#" class="text-slate-500 hover:text-primary transition-colors border-b border-slate-100 dark:border-slate-800 pb-2">Minhas Doações</a>
+                            <a href="index.html" class="text-slate-500 hover:text-primary transition-colors border-b border-slate-100 dark:border-slate-800 pb-2">Animais Urgentes</a>
+                            <a href="#" class="text-slate-500 hover:text-primary transition-colors border-b border-slate-100 dark:border-slate-800 pb-2">Impacto</a>
+                        </div>
+                        <div class="mt-auto">
+                            <button onclick="localStorage.clear(); navigateTo('landing');" class="w-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 py-3 rounded-full font-bold text-center">Sair da Conta</button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] px-4 md:px-10">
+                    <div class="flex flex-wrap justify-between items-end gap-4 pb-6">
+                        <div class="flex min-w-72 flex-col gap-2">
+                            <p class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-tight">Dashboard do Doador</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-lg font-medium">Bem-vindo de volta, João. Veja o resumo do seu impacto este ano.</p>
+                        </div>
+                        <button onclick="navigateTo('doar')" class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 px-6 bg-primary text-white text-base font-bold leading-normal transition-transform active:scale-95 shadow-lg shadow-primary/20">
+                            <span class="material-symbols-outlined mr-2">add_circle</span>
+                            <span class="truncate">Nova Doação</span>
+                        </button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-6">
+                        <div class="flex flex-col gap-4 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="size-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined">payments</span>
+                                </div>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Total doado em 2026</p>
+                            </div>
+                            <p data-animate-number class="text-slate-900 dark:text-white tracking-tight text-3xl font-extrabold leading-tight">2480</p>
+                            <div class="flex items-center text-xs text-primary font-bold">
+                                <span class="material-symbols-outlined text-sm mr-1">trending_up</span>
+                                +18% em relação a 2025
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-4 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="size-10 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
+                                    <span class="material-symbols-outlined">favorite</span>
+                                </div>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Animais ajudados (2026)</p>
+                            </div>
+                            <p data-animate-number class="text-slate-900 dark:text-white tracking-tight text-3xl font-extrabold leading-tight">27</p>
+                            <div class="flex items-center text-xs text-slate-400 font-medium">
+                                <span class="material-symbols-outlined text-sm mr-1">schedule</span>
+                                Última ajuda: Hoje
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-4 rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="size-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-500">
+                                    <span class="material-symbols-outlined">autorenew</span>
+                                </div>
+                                <p class="text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider">Doações recorrentes</p>
+                            </div>
+                            <p data-animate-number class="text-slate-900 dark:text-white tracking-tight text-3xl font-extrabold leading-tight">3</p>
+                            <div class="flex items-center text-xs text-primary font-bold">Próxima renovação: 05 Abr</div>
+                        </div>
+                    </div>
+
+                    <!-- Upgrade Cards: Tornar-se Tutor ou Clínica -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-6 px-4">
+                        <!-- Card: Tornar-se Tutor Verificado -->
+                        <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 p-6 hover:shadow-xl transition-all group">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="size-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+                                        <span class="material-symbols-outlined text-2xl">badge</span>
+                                    </div>
+                                    <h3 class="text-xl font-black text-slate-900 dark:text-white">Tornar-se Tutor Verificado</h3>
+                                </div>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed">
+                                    Verifique sua identidade e comece a criar campanhas para animais que você resgatou ou está cuidando.
+                                </p>
+                                <ul class="space-y-2 mb-6">
+                                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                        <span class="material-symbols-outlined text-primary text-base">check_circle</span>
+                                        Criar campanhas de arrecadação
+                                    </li>
+                                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                        <span class="material-symbols-outlined text-primary text-base">check_circle</span>
+                                        Vincular com clínicas credenciadas
+                                    </li>
+                                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                        <span class="material-symbols-outlined text-primary text-base">check_circle</span>
+                                        Badge de tutor verificado
+                                    </li>
+                                </ul>
+                                <button onclick="navigateTo('verificacao')" class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+                                    Iniciar Verificação
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card: Cadastrar Clínica/Parceiro -->
+                        <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 border-2 border-blue-500/20 p-6 hover:shadow-xl transition-all group">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                            <div class="relative z-10">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="size-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-500">
+                                        <span class="material-symbols-outlined text-2xl">medical_services</span>
+                                    </div>
+                                    <h3 class="text-xl font-black text-slate-900 dark:text-white">Cadastrar Minha Clínica</h3>
+                                </div>
+                                <p class="text-slate-600 dark:text-slate-300 text-sm mb-6 leading-relaxed">
+                                    É veterinário ou possui uma clínica? Torne-se um parceiro credenciado e ajude mais animais.
+                                </p>
+                                <ul class="space-y-2 mb-6">
+                                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                        <span class="material-symbols-outlined text-blue-500 text-base">check_circle</span>
+                                        Receber solicitações de campanhas
+                                    </li>
+                                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                        <span class="material-symbols-outlined text-blue-500 text-base">check_circle</span>
+                                        Dashboard exclusivo para clínicas
+                                    </li>
+                                    <li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                        <span class="material-symbols-outlined text-blue-500 text-base">check_circle</span>
+                                        Transparência financeira total
+                                    </li>
+                                </ul>
+                                <button onclick="navigateTo('cadastro-parceiro')" class="w-full bg-blue-500 hover:bg-blue-500/90 text-white py-3 rounded-full font-bold text-sm transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2">
+                                    Cadastrar Clínica
+                                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-2 pb-2 pt-6 flex justify-center">
+                        <label class="group relative flex items-center w-full max-w-[400px] h-12 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 transition-all duration-300 focus-within:ring-2 focus-within:ring-primary/40 focus-within:shadow-lg focus-within:shadow-primary/10">
+                            <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-xl">search</span>
+                            <input class="w-full border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-400 pl-3 text-slate-700 dark:text-slate-200" placeholder="Buscar no histórico de doações..." />
+                        </label>
+                    </div>
+
+                    <div id="historico-doacoes" class="flex items-center justify-between px-2 pb-4 pt-4">
+                        <h2 class="text-slate-900 dark:text-white text-2xl font-extrabold leading-tight tracking-tight">Histórico de doações</h2>
+                        <div class="flex gap-2">
+                            <button class="px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300">Janeiro - Março 2026</button>
+                            <button class="text-primary text-sm font-bold hover:underline flex items-center gap-1 ml-4">
+                                Filtrar <span class="material-symbols-outlined text-sm">filter_list</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="py-3">
+                        <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-slate-50 dark:bg-slate-800/50">
+                                            <th class="px-6 py-4 text-slate-900 dark:text-slate-200 text-sm font-bold uppercase tracking-wider">Animal</th>
+                                            <th class="px-6 py-4 text-slate-900 dark:text-slate-200 text-sm font-bold uppercase tracking-wider">Data</th>
+                                            <th class="px-6 py-4 text-slate-900 dark:text-slate-200 text-sm font-bold uppercase tracking-wider text-right">Valor</th>
+                                            <th class="px-6 py-4 text-slate-500 dark:text-slate-400 text-sm font-bold uppercase tracking-wider text-center">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                        <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                            <td class="px-6 py-5">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="size-10 rounded-full bg-cover bg-center border border-slate-200" style='background-image: url("https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=100&h=100&fit=crop");'></div>
+                                                    <div>
+                                                        <p class="text-slate-900 dark:text-white text-sm font-bold">Mel</p>
+                                                        <p class="text-slate-500 text-xs">Cachorro • Abrigo Esperança</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-5 text-slate-500 dark:text-slate-400 text-sm font-medium">15/03/2026</td>
+                                            <td class="px-6 py-5 text-slate-900 dark:text-white text-sm font-bold text-right">R$ 150,00</td>
+                                            <td class="px-6 py-5">
+                                                <div class="flex items-center justify-center gap-3">
+                                                    <button class="px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all">Ver impacto</button>
+                                                    <button class="p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                                                        <span class="material-symbols-outlined text-xl">description</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                            <td class="px-6 py-5">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="size-10 rounded-full bg-cover bg-center border border-slate-200" style='background-image: url("https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=100&h=100&fit=crop");'></div>
+                                                    <div>
+                                                        <p class="text-slate-900 dark:text-white text-sm font-bold">Rex</p>
+                                                        <p class="text-slate-500 text-xs">Gato • Adote um Amigo</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-5 text-slate-500 dark:text-slate-400 text-sm font-medium">02/02/2026</td>
+                                            <td class="px-6 py-5 text-slate-900 dark:text-white text-sm font-bold text-right">R$ 100,00</td>
+                                            <td class="px-6 py-5">
+                                                <div class="flex items-center justify-center gap-3">
+                                                    <button class="px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all">Ver impacto</button>
+                                                    <button class="p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                                                        <span class="material-symbols-outlined text-xl">description</span>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seção: Expanda suas possibilidades -->
+                    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card: Seja Protetor -->
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20 hover:border-primary/40 transition-all group cursor-pointer"
+                             onclick="navigateTo('verificacao')">
+                            <div class="flex items-start gap-4">
+                                <div class="size-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all">
+                                    <span class="material-symbols-outlined text-primary group-hover:text-white text-2xl">pets</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-black text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors">
+                                        🐾 Quero ser Protetor
+                                    </h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                        Crie campanhas para animais resgatados e ajude a encontrar lares amorosos.
+                                    </p>
+                                    <div class="flex items-center gap-2 text-primary font-bold text-xs">
+                                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                                        Verificação de identidade necessária
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card: Cadastrar Clínica -->
+                        <div class="p-6 rounded-xl bg-gradient-to-br from-blue-500/10 to-blue-500/5 border-2 border-blue-500/20 hover:border-blue-500/40 transition-all group cursor-pointer"
+                             onclick="navigateTo('cadastro-parceiro')">
+                            <div class="flex items-start gap-4">
+                                <div class="size-12 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500 group-hover:scale-110 transition-all">
+                                    <span class="material-symbols-outlined text-blue-500 group-hover:text-white text-2xl">medical_services</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-black text-slate-900 dark:text-white mb-1 group-hover:text-blue-500 transition-colors">
+                                        🏥 Sou Clínica Parceira
+                                    </h3>
+                                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">
+                                        Cadastre sua clínica e ajude animais oferecendo serviços veterinários.
+                                    </p>
+                                    <div class="flex items-center gap-2 text-blue-500 font-bold text-xs">
+                                        <span class="material-symbols-outlined text-sm">business</span>
+                                        Credenciamento institucional
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 p-8 rounded-xl bg-slate-900 dark:bg-primary/5 text-white border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative">
+                        <div class="absolute -right-10 -bottom-10 opacity-10">
+                            <span class="material-symbols-outlined !text-[200px]">volunteer_activism</span>
+                        </div>
+                        <div class="flex flex-col gap-2 relative z-10">
+                            <span class="text-primary font-bold text-sm tracking-widest uppercase mb-1">Destaque 2026</span>
+                            <h3 class="text-2xl font-bold tracking-tight">Ajude na reconstrução de inverno</h3>
+                            <p class="text-slate-400 max-w-md">As frentes frias de 2026 estão severas. O abrigo "Patas Felizes" precisa de mantas e aquecedores para 45 cães idosos.</p>
+                        </div>
+                        <button onclick="navigateTo('doar')" class="w-full md:w-auto px-8 py-4 bg-primary text-white font-black rounded-full shadow-lg hover:brightness-110 transition-all relative z-10">
+                            Ajudar agora
+                        </button>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="border-t border-slate-200 dark:border-slate-800 py-10 px-10 bg-white dark:bg-background-dark">
+                <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex flex-col gap-2 items-center md:items-start">
+                        <div class="flex items-center gap-2 text-primary font-bold">
+                            <span class="material-symbols-outlined">verified_user</span>
+                            salvus.pet — Transparência total
+                        </div>
+                        <p class="text-slate-400 text-xs text-center md:text-left">Relatórios auditados em tempo real • CNPJ: 00.000.000/0001-00</p>
+                        <p class="text-slate-400 text-sm font-medium mt-2">© 2026 salvuspet.</p>
+                    </div>
+                    <div class="flex gap-6">
+                        <a class="text-slate-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">help</span></a>
+                        <a class="text-slate-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+                        <a class="text-slate-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">settings</span></a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

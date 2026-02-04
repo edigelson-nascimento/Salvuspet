@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="./assets/logo2.png" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard do Protetor Verificado | SalvusPet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: { "primary": "#15803d", "background-light": "#f6f8f6", "background-dark": "#112116" },
+                    fontFamily: { "display": ["Manrope", "sans-serif"] },
+                    borderRadius: { "DEFAULT": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; vertical-align: middle; }
+        body { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111813] dark:text-white min-h-screen">
+    <div class="relative flex h-auto w-full flex-col bg-white dark:bg-[#1a2e1f] border-b border-[#f0f4f2] dark:border-[#2d4a36]">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center py-3">
+                <div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+                    <header class="flex items-center justify-between whitespace-nowrap">
+                        <div class="flex items-center gap-8">
+                            <div class="flex items-center gap-3 text-[#111813] dark:text-primary">
+                                <a href="index.html">
+                                    <img src="./assets/logo.png" alt="SalvusPet Logo" class="h-16 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+                                </a>
+                            </div>
+                            <div class="hidden md:flex items-center gap-9">
+                                <a class="text-primary text-sm font-bold leading-normal border-b-2 border-primary pb-1" href="#">Dashboard</a>
+                                <a class="text-[#111813] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Minhas Campanhas</a>
+                                <a class="text-[#111813] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Clínicas</a>
+                                <a class="text-[#111813] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Relatórios</a>
+                            </div>
+                        </div>
+                        <div class="flex flex-1 justify-end gap-4 items-center">
+                            <label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+                                <div class="flex w-full flex-1 items-stretch rounded-full h-full">
+                                    
+                                </div>
+                            </label>
+                            <div class="flex gap-2">
+                                <button class="theme-toggle flex items-center justify-center rounded-full size-10 bg-[#f0f4f2] dark:bg-[#2d4a36] text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                                    <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                                </button>
+                                <button class="flex items-center justify-center rounded-full size-10 bg-[#f0f4f2] dark:bg-[#2d4a36] text-[#111813] dark:text-white">
+                                    <span class="material-symbols-outlined">notifications</span>
+                                </button>
+                                <button class="flex items-center justify-center rounded-full size-10 bg-[#f0f4f2] dark:bg-[#2d4a36] text-[#111813] dark:text-white">
+                                    <a href="#"><span class="material-symbols-outlined">settings</span>
+                                </button>
+                                <button id="menu-toggle" class="md:hidden text-2xl material-symbols-outlined p-2">menu</button>
+                            </div>
+                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary" style='background-image: url("https://ui-avatars.com/api/?name=Joao+Silva&background=15803d&color=fff");'></div>
+                        </div>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+        <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+        <nav id="menu-content" class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+            <div class="flex flex-col h-full p-8 leading-loose">
+                <div class="flex justify-end mb-8">
+                    <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                </div>
+                <div class="flex flex-col gap-6 text-lg font-bold">
+                    <a href="#" class="text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Dashboard</a>
+                    <a href="#" class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Minhas Campanhas</a>
+                    <a href="#" class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Clínicas</a>
+                    <a href="#" class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Relatórios</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="px-4 md:px-10 lg:px-40 flex justify-center py-8">
+        <div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+            <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                <div class="flex min-w-72 flex-col gap-1">
+                    <p class="text-[#111813] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Bem-vindo, João!</p>
+                    <p class="text-[#63886f] dark:text-gray-400 text-base font-normal leading-normal">Gerencie suas campanhas de arrecadação e salve vidas hoje.</p>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary font-bold text-sm">
+                    <span class="material-symbols-outlined text-sm">verified</span>
+                    <span>Protetor Verificado</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2e1f] border border-[#dce5df] dark:border-[#2d4a36] shadow-sm">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="material-symbols-outlined text-primary">payments</span>
+                        <p class="text-[#111813] dark:text-gray-200 text-base font-medium leading-normal">Total Arrecadado</p>
+                    </div>
+                    <p data-animate-number class="text-[#111813] dark:text-white tracking-light text-3xl font-bold leading-tight">12450</p>
+                    <div class="flex items-center gap-1 text-[#078829] text-sm font-semibold">
+                        <span class="material-symbols-outlined text-sm">trending_up</span>
+                        <span>+12% este mês</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2e1f] border border-[#dce5df] dark:border-[#2d4a36] shadow-sm">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="material-symbols-outlined text-primary">campaign</span>
+                        <p class="text-[#111813] dark:text-gray-200 text-base font-medium leading-normal">Campanhas Ativas</p>
+                    </div>
+                    <p data-animate-number class="text-[#111813] dark:text-white tracking-light text-3xl font-bold leading-tight">8</p>
+                    <p class="text-[#63886f] dark:text-gray-400 text-sm font-medium leading-normal">Próximo objetivo em breve</p>
+                </div>
+
+                <div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2e1f] border border-[#dce5df] dark:border-[#2d4a36] shadow-sm">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="material-symbols-outlined text-primary">favorite</span>
+                        <p class="text-[#111813] dark:text-gray-200 text-base font-medium leading-normal">Animais Ajudados</p>
+                    </div>
+                    <p data-animate-number class="text-[#111813] dark:text-white tracking-light text-3xl font-bold leading-tight">24</p>
+                    <div class="flex items-center gap-1 text-[#078829] text-sm font-semibold">
+                        <span class="material-symbols-outlined text-sm">add_circle</span>
+                        <span>+4 novas vidas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between px-4 pb-3 pt-5">
+                    <h2 class="text-[#111813] dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em]">Campanhas em Andamento</h2>
+                    <button class="text-primary text-sm font-bold hover:underline">Ver todas</button>
+                </div>
+
+                <div class="overflow-hidden bg-white dark:bg-[#1a2e1f] border border-[#dce5df] dark:border-[#2d4a36] rounded-xl shadow-sm">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-[#f0f4f2] dark:bg-[#243d2c] text-[#63886f] dark:text-gray-300 text-xs uppercase font-bold tracking-wider">
+                                <th class="px-6 py-4">Campanha</th>
+                                <th class="px-6 py-4">Progresso Arrecadado</th>
+                                <th class="px-6 py-4">Clínica Parceira</th>
+                                <th class="px-6 py-4 text-right">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#f0f4f2] dark:divide-[#2d4a36]">
+                            <tr class="hover:bg-[#f6f8f6] dark:hover:bg-[#203a27] transition-colors">
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-4">
+                                        <div class="size-12 rounded-lg bg-center bg-cover flex-shrink-0" style='background-image: url("https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=100");'></div>
+                                        <div>
+                                            <span class="text-[#111813] dark:text-white text-sm font-bold">Cirurgia do Thor</span>
+                                            <span class="text-[#63886f] text-xs block">Criada há 5 dias</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 min-w-[200px]">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex justify-between text-xs font-bold">
+                                            <span class="text-primary">75%</span>
+                                            <span class="text-[#63886f]">R$ 1.500 / R$ 2.000</span>
+                                        </div>
+                                        <div class="w-full bg-[#f0f4f2] dark:bg-[#2d4a36] rounded-full h-2">
+                                            <div class="bg-primary h-2 rounded-full transition-all duration-1000" data-progress="75" style="width: 0%"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[#63886f] text-sm">local_hospital</span>
+                                        <span class="text-[#111813] dark:text-gray-200 text-sm font-medium">VetVida Center</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5 text-right">
+                                    <button class="bg-[#f0f4f2] dark:bg-[#2d4a36] text-[#111813] dark:text-white px-4 py-2 rounded-full text-xs font-bold hover:bg-primary hover:text-white transition-all">
+                                        Gerenciar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-6 px-10 border-t border-slate-100 dark:border-slate-800 text-center">
+        <p class="text-xs text-slate-400">© 2026 salvuspet.</p>
+    </footer>
+
+    <div class="fixed bottom-10 right-10 z-50">
+        <button onclick="navigateTo('criar-campanha')" class="group flex items-center gap-3 bg-primary text-white px-6 py-4 rounded-full shadow-2xl hover:scale-105 transition-transform">
+            <span class="material-symbols-outlined text-2xl font-bold">add</span>
+            <span class="text-base font-extrabold tracking-tight">Criar Nova Campanha</span>
+        </button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png"
+        href="./assets/logo2.png" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Criação de Campanha e Vínculo | SalvusPet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display min-h-screen text-[#111813] dark:text-white transition-colors duration-300">
+    <!-- Top Navigation Bar -->
+    <header
+        class="sticky top-0 z-50 bg-white dark:bg-background-dark border-b border-solid border-[#dce5df] dark:border-[#2a3a2e] px-4 md:px-10 py-3">
+        <div class="max-w-[1200px] mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <a href="../fluxo_principal/code.html">
+                    <img src="./assets/logo.png"
+                        alt="SalvusPet Logo"
+                        class="h-10 sm:h-14 w-auto drop-shadow-lg transition-transform hover:scale-105 duration-300">
+                </a>
+            </div>
+            <div class="flex flex-1 justify-end gap-4 md:gap-8 items-center">
+                <nav class="hidden lg:flex items-center gap-9">
+                    <a class="text-[#111813] dark:text-white text-sm font-medium hover:text-primary transition-colors"
+                        href="dashboard-protetor.html">Dashboard</a>
+                    <a class="text-[#111813] dark:text-white text-sm font-medium hover:text-primary transition-colors"
+                        href="#">Sobre</a>
+                </nav>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full size-10 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white transition-colors hover:bg-primary/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                    <div class="h-8 w-[1px] bg-[#dce5df] dark:bg-[#2a3a2e] hidden md:block"></div>
+                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary"
+                        data-alt="User profile avatar"
+                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnfPc2Ho-4kbgGWcjSrwnTC0xIWoZzi3ysaNZjRvk2lFMNdneqQ_5ojSCxrnNDCkB1C6CXRC3XXpnnOE8OypXoWk7Y8LcCFQom9zS_UTNgvVkyiE2ukSSEShXObEyezsmP-Tghq9YPQA95ReL8aJbPCgfui9kBLEgKv9Jl4FPlRcgVOH95483gC5tVxCY2a__SSmivWNvAQrobKyUMQvYDtAEAjao8l9zKBfN6QCNO3j1EYmtNMNKiEqwURXtbqRUOvMy5o-u0uuv3");'>
+                    </div>
+                    <button id="menu-toggle" class="lg:hidden text-2xl material-symbols-outlined p-2">menu</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-[960px] mx-auto px-4 py-8">
+        <!-- Breadcrumbs -->
+        <nav class="flex flex-wrap gap-2 pb-6">
+            <a class="text-[#63886f] dark:text-[#a1b8a9] text-sm font-medium flex items-center gap-1 hover:underline"
+                href="#">
+                <span class="material-symbols-outlined text-sm">home</span> Home
+            </a>
+            <span class="text-[#63886f] text-sm font-medium">/</span>
+            <span class="text-primary text-sm font-bold">Criar Campanha</span>
+        </nav>
+        <!-- Page Heading -->
+        <div class="mb-8">
+            <h1 class="text-[#111813] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] mb-3">Nova
+                Campanha de Doação</h1>
+            <p class="text-[#63886f] dark:text-[#a1b8a9] text-lg font-normal leading-normal">
+                Siga os passos abaixo para cadastrar o animal e vincular sua campanha a uma clínica credenciada.
+            </p>
+        </div>
+        <div class="space-y-8">
+            <!-- Step 1: Animal Data -->
+            <section
+                class="bg-white dark:bg-[#1a2e21] rounded-xl shadow-sm border border-[#dce5df] dark:border-[#2a3a2e] overflow-hidden">
+                <div class="bg-primary/10 px-6 py-4 flex items-center gap-3">
+                    <span
+                        class="bg-primary text-white size-8 rounded-full flex items-center justify-center font-bold">1</span>
+                    <h2 class="text-[#111813] dark:text-white text-xl font-bold">Dados do Animal</h2>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <label class="flex flex-col gap-2">
+                            <span class="text-[#111813] dark:text-white text-sm font-bold">Nome do Animal</span>
+                            <input
+                                class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                                placeholder="Ex: Totó" type="text" value="Totó" />
+                        </label>
+                        <label class="flex flex-col gap-2">
+                            <span class="text-[#111813] dark:text-white text-sm font-bold">Espécie</span>
+                            <select
+                                class="form-select w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]">
+                                <option selected="">Cachorro</option>
+                                <option>Gato</option>
+                                <option>Outros</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <label class="flex flex-col gap-2">
+                            <span class="text-[#111813] dark:text-white text-sm font-bold">Porte</span>
+                            <select
+                                class="form-select w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]">
+                                <option>Pequeno</option>
+                                <option selected="">Médio</option>
+                                <option>Grande</option>
+                            </select>
+                        </label>
+                        <label class="flex flex-col gap-2">
+                            <span class="text-[#111813] dark:text-white text-sm font-bold">Urgência do Caso</span>
+                            <select
+                                class="form-select w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 px-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]">
+                                <option value="baixa">Baixa</option>
+                                <option value="moderada" selected="">Moderada</option>
+                                <option value="alta">Alta (Crítico)</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="flex flex-col gap-2">
+                        <span class="text-[#111813] dark:text-white text-sm font-bold">Descrição da História</span>
+                        <textarea
+                            class="form-textarea w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white p-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                            placeholder="Conte a história do Totó e por que ele precisa de ajuda..."
+                            rows="4">O Totó foi encontrado em uma estrada e precisa de cuidados médicos urgentes e vacinação antes de ser disponibilizado para adoção responsável.</textarea>
+                    </label>
+                    <div class="flex flex-col gap-3">
+                        <span class="text-[#111813] dark:text-white text-sm font-bold">Fotos do Animal</span>
+                        <div class="flex gap-4">
+                            <div
+                                class="size-24 rounded-xl border-2 border-dashed border-[#dce5df] dark:border-[#2a3a2e] flex flex-col items-center justify-center text-[#63886f] cursor-pointer hover:bg-primary/5 transition-colors">
+                                <span class="material-symbols-outlined text-3xl">add_a_photo</span>
+                            </div>
+                            <div class="size-24 rounded-xl bg-cover bg-center border border-[#dce5df]"
+                                data-alt="Brown and white dog photo"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCvZZuS0S6rv8NnhYPJXroKTZmgHbIku-ypvj8s8beigosUaLZ16pjagOg92a65pa_BQ_D2h6bsjQhPSoFQP6R29XDIipkqqCG7pU8on3K3_fVayy3KLIMI4TRDV6KhGhb8lCUpyxzspZZq57BWcPv8XbtEXTXJK12CCDmmrO-b6pG-zO_ds8QNPdQKdQ26g6RPVU134e6sV10xa_G3P36kpf4RtoLIgc9AV4oPmKy_4ausfskeHbjuhK2yk9mAzcXhLrqn8NsdRcGd');">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Step 2: Clinic/Partner Selection -->
+            <section
+                class="bg-white dark:bg-[#1a2e21] rounded-xl shadow-sm border border-[#dce5df] dark:border-[#2a3a2e] overflow-hidden">
+                <div class="bg-primary/10 px-6 py-4 flex items-center gap-3">
+                    <span
+                        class="bg-primary text-white size-8 rounded-full flex items-center justify-center font-bold">2</span>
+                    <h2 class="text-[#111813] dark:text-white text-xl font-bold">Vincular Clínica Credenciada</h2>
+                </div>
+                <div class="p-6 space-y-6">
+                    <p class="text-[#63886f] dark:text-[#a1b8a9] text-sm">
+                        Para garantir a segurança das doações, cada campanha deve ser validada por uma clínica parceira.
+                        Pesquise e selecione a clínica onde o animal será atendido.
+                    </p>
+                    <!-- Searchable Dropdown Mockup -->
+                    <div class="relative group">
+                        <label class="flex flex-col gap-2">
+                            <span class="text-[#111813] dark:text-white text-sm font-bold">Escolher Clínica ou Parceiro
+                                Credenciado</span>
+                            <div class="relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#63886f]">search</span>
+                                <input
+                                    class="form-input w-full rounded-lg border border-[#dbdfe6] dark:border-gray-700 bg-white dark:bg-gray-800 text-[#111318] dark:text-white h-12 pl-12 pr-4 focus:ring-2 focus:ring-primary/20 focus:border-primary placeholder:text-[#616f89]"
+                                    placeholder="Nome da clínica, veterinário ou bairro..." type="text" />
+                            </div>
+                        </label>
+                        <!-- Search Results Dropdown -->
+                        <div
+                            class="mt-2 w-full rounded-xl border border-[#dce5df] dark:border-[#2a3a2e] bg-white dark:bg-[#1a2e21] shadow-xl overflow-hidden z-20">
+                            <div class="max-h-64 overflow-y-auto">
+                                <!-- Option 1 -->
+                                <div
+                                    class="p-4 flex items-center justify-between border-b border-[#f0f4f2] dark:border-[#2a3a2e] hover:bg-primary/5 cursor-pointer transition-colors group/item">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="size-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined">medical_services</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-[#111813] dark:text-white font-bold">Clínica Veterinária
+                                                Amigo Fiel</p>
+                                            <div class="flex items-center gap-2">
+                                                <div class="flex text-primary">
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs">star_half</span>
+                                                </div>
+                                                <span class="text-[#63886f] text-xs font-medium">4.5 • Gleba C,
+                                                    Camaçari</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="bg-primary/20 text-primary px-4 py-2 rounded-full text-xs font-bold hover:bg-primary hover:text-white transition-colors">Vincular</button>
+                                </div>
+                                <!-- Option 2 (Selected State) -->
+                                <div
+                                    class="p-4 flex items-center justify-between border-b border-[#f0f4f2] dark:border-[#2a3a2e] bg-primary/10 border-l-4 border-l-primary cursor-pointer transition-colors">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="size-12 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg">
+                                            <span class="material-symbols-outlined">health_and_safety</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-[#111813] dark:text-white font-bold">Hospital Vet Esperança
+                                            </p>
+                                            <div class="flex items-center gap-2">
+                                                <div class="flex text-primary">
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                </div>
+                                                <span class="text-[#63886f] text-xs font-medium">5.0 • Centro,
+                                                    Camaçari</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-primary font-bold text-xs">
+                                        <span class="material-symbols-outlined">check_circle</span>
+                                        VINCULADO
+                                    </div>
+                                </div>
+                                <!-- Option 3 -->
+                                <div
+                                    class="p-4 flex items-center justify-between hover:bg-primary/5 cursor-pointer transition-colors group/item">
+                                    <div class="flex items-center gap-4">
+                                        <div
+                                            class="size-12 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+                                            <span class="material-symbols-outlined">pets</span>
+                                        </div>
+                                        <div>
+                                            <p class="text-[#111813] dark:text-white font-bold">Cuidado Animal - Batel
+                                            </p>
+                                            <div class="flex items-center gap-2">
+                                                <div class="flex text-primary">
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs fill-[1]">star</span>
+                                                    <span class="material-symbols-outlined text-xs">star</span>
+                                                </div>
+                                                <span class="text-[#63886f] text-xs font-medium">4.2 • Abrantes,
+                                                    Camaçari</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="bg-primary/20 text-primary px-4 py-2 rounded-full text-xs font-bold hover:bg-primary hover:text-white transition-colors">Vincular</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Summary / Submit -->
+            <section
+                class="bg-[#112116] text-white p-8 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex flex-col gap-2">
+                    <h3 class="text-xl font-bold">Tudo pronto?</h3>
+                    <p class="text-[#a1b8a9] text-sm max-w-md">
+                        Ao enviar para aprovação, nossa equipe e a clínica selecionada (Hospital Vet Esperança) irão
+                        analisar os dados. Você será notificado em até 24 horas.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                    <button
+                        class="w-full sm:w-auto sm:min-w-[180px] h-14 rounded-full border border-[#dce5df] text-white font-bold hover:bg-white/10 transition-colors">
+                        Salvar Rascunho
+                    </button>
+                    <button
+                        class="w-full sm:w-auto sm:min-w-[220px] h-14 rounded-full bg-primary text-white font-bold text-lg hover:brightness-110 transition-all shadow-lg shadow-primary/20">
+                        Enviar para Aprovação
+                    </button>
+                </div>
+            </section>
+        </div>
+        <!-- Extra Info Footer -->
+        <footer class="py-6 px-10 border-t border-slate-100 dark:border-slate-800 text-center">
+            <p class="text-xs text-slate-400">© 2026 salvuspet.</p>
+        </footer>
+    </main>
+    <!-- Map/Location Visualization Floating Card -->
+    <div
+        class="fixed bottom-8 right-8 hidden xl:block w-72 bg-white dark:bg-[#1a2e21] rounded-xl shadow-2xl border border-[#dce5df] dark:border-[#2a3a2e] overflow-hidden">
+        <div class="h-32 bg-gray-200 bg-cover bg-center" data-alt="Abstract map showing clinic location"
+            data-location="Camaçari"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEwHVgRnu0daslde4oJZsaH4FfDubewf-tzpsQZfcKzp8grveUkfdAmebHrYiqTBNdLa6mg4lhgI0qEjdVZ8wS9xHKevHVWNPhxJiazECzPp09XFMC6zgLhIQg3AXjgwPjKtP8fsdfHoU_Ph1fUKurQfe4lfJHDJI7O3MuyRArXSK3yIu9N_IfsXWgL5qHHsok5Xfz-LvlCXnv1wQxYXg-T3RQcO7ON2F9OZyoA9siDsgJNhKzYQz4pD0QGJ0C241NvTUOSw7mZXrs');">
+        </div>
+        <div class="p-4">
+            <h4 class="text-[#111813] dark:text-white font-bold text-sm mb-1">Localização da Clínica</h4>
+            <p class="text-[#63886f] text-xs">Rua Francisco Drumond, 123 - Centro, Camaçari, BA</p>
+        </div>
+    </div>
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+        <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+        <nav id="menu-content"
+            class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-[#1a2e21] shadow-2xl transition-transform translate-x-full">
+            <div class="flex flex-col h-full p-8 leading-loose">
+                <div class="flex justify-end mb-8">
+                    <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                </div>
+                <div class="flex flex-col gap-6 text-lg font-bold">
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Campanhas</a>
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Parceiros</a>
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Sobre</a>
+                    <a href="#"
+                        class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Meu
+                        Perfil</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuContent = document.getElementById('menu-content');
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                menuContent.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMenu() {
+            menuContent.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        // Dark Mode Logic
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        const themeIcons = document.querySelectorAll('.theme-icon');
+        const htmlElement = document.documentElement;
+
+        function updateIcons(isDark) {
+            themeIcons.forEach(icon => {
+                icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            });
+        }
+
+        // Check local storage or system preference
+        function checkTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                updateIcons(true);
+            } else {
+                htmlElement.classList.add('light');
+                htmlElement.classList.remove('dark');
+                updateIcons(false);
+            }
+        }
+
+        checkTheme();
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    htmlElement.classList.add('light');
+                    localStorage.theme = 'light';
+                    updateIcons(false);
+                } else {
+                    htmlElement.classList.remove('light');
+                    htmlElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    updateIcons(true);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Solicitações de Campanhas | Portal do Parceiro</title>
+    <link rel="icon" type="image/png"
+        href="https://cdn.discordapp.com/attachments/1447387480146972815/1465398920845725867/20260124_165456_0000.png?ex=6978f698&is=6977a518&hm=ec3f5e93305d2f2da759b11a0f716da6aba9805eee5095929edcb7769b4ce842&" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#111813] dark:text-white">
+    <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- Top Navigation Bar -->
+            <header
+                class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 md:px-10 py-3 sticky top-0 z-50">
+                <div class="flex items-center gap-8">
+                    <div class="flex items-center">
+                        <img src="https://cdn.discordapp.com/attachments/1447387480146972815/1465524803707605064/salvuspet_Logotipo_20260126_225159_0000.png?ex=69796bd5&is=69781a55&hm=2e52ad315d05e694757ee41e9b74cce83e00de91612790e0114ab6498c65ba67&"
+                            alt="SalvusPet Logo"
+                            class="h-10 sm:h-14 w-auto drop-shadow-lg transition-transform hover:scale-105 duration-300">
+                    </div>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <nav class="hidden lg:flex items-center gap-9">
+                        <a class="text-[#111813] dark:text-white text-sm font-medium hover:text-primary transition-colors"
+                            href="dashboard-clinica.html">Dashboard</a>
+                        <a class="text-primary text-sm font-bold border-b-2 border-primary pb-1"
+                            href="#">Solicitações</a>
+                        <a class="text-[#111813] dark:text-white text-sm font-medium hover:text-primary transition-colors"
+                            href="#">Campanhas Ativas</a>
+                        <a class="text-[#111813] dark:text-white text-sm font-medium hover:text-primary transition-colors"
+                            href="#">Histórico</a>
+                    </nav>
+                    <div class="flex items-center gap-4">
+                        <button id="theme-toggle"
+                            class="flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-white transition-colors hover:bg-primary/20">
+                            <span class="material-symbols-outlined" id="theme-icon">dark_mode</span>
+                        </button>
+                        <span class="material-symbols-outlined cursor-pointer hover:text-primary">notifications</span>
+                        <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary"
+                            data-alt="Profile picture of clinic manager"
+                            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD9634i8Xczb7NIx5B2NBD_cMdQiKZKlxt7nZ8qrasOD8S8URF5TBQHMfsFChuZnWO_Dez1vvaZ1nZdfYVGELqxwNUQzB0H7gYfc16NgPELT87n5XTZcJgdxY6EFIF1Sr1oJKY8RQcjjP8Z9YjHAXPM_RR9q6hqEeBQmdv1OTnSxI8ff8F2L-4zYRtvZbteMwuRapGDqxgeNpb6yJthut-XUqsp0tX1ZseYRTpdT0nd2B4-QRHySlyy4isNNu4WzNPJN5axyWThDPa3");'>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="flex flex-1 justify-center py-8">
+                <div class="layout-content-container flex flex-col max-w-[960px] flex-1 px-4 md:px-0">
+                    <!-- Search Bar above Header -->
+                    <div class="px-4 pb-2 pt-6 flex justify-center">
+                        <label
+                            class="group relative flex items-center w-full max-w-[400px] h-12 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 transition-all duration-300 focus-within:ring-2 focus-within:ring-primary/40 focus-within:shadow-lg focus-within:shadow-primary/10">
+                            <span
+                                class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-xl">search</span>
+                            <input
+                                class="w-full border-none bg-transparent focus:ring-0 text-sm placeholder:text-slate-500 pl-3 text-slate-900 dark:text-white"
+                                placeholder="Buscar campanhas..." />
+                        </label>
+                    </div>
+                    <!-- Page Heading -->
+                    <div class="flex flex-wrap justify-between gap-3 p-4 mb-4">
+                        <div class="flex min-w-72 flex-col gap-2">
+                            <h1
+                                class="text-[#111813] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">
+                                Solicitações de Campanhas</h1>
+                            <p class="text-[#63886f] text-base font-normal leading-normal">Gerencie novos pedidos de
+                                ajuda para animais em sua região.</p>
+                        </div>
+                    </div>
+                    <!-- Filters/Chips -->
+                    <div class="flex gap-3 p-4 flex-wrap overflow-x-auto pb-4">
+                        <button
+                            class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-primary text-white px-5 shadow-sm">
+                            <span class="text-sm font-bold">Todas</span>
+                            <span class="material-symbols-outlined text-lg">filter_list</span>
+                        </button>
+                        <button
+                            class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 hover:border-primary transition-all">
+                            <span class="text-[#111813] dark:text-white text-sm font-medium">Cirurgia</span>
+                            <span class="material-symbols-outlined text-lg">medical_services</span>
+                        </button>
+                        <button
+                            class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 hover:border-primary transition-all">
+                            <span class="text-[#111813] dark:text-white text-sm font-medium">Alimentação</span>
+                            <span class="material-symbols-outlined text-lg">restaurant</span>
+                        </button>
+                        <button
+                            class="flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-5 hover:border-primary transition-all">
+                            <span class="text-red-500 text-sm font-bold">Urgentes</span>
+                            <span class="material-symbols-outlined text-lg">error</span>
+                        </button>
+                    </div>
+                    <!-- Requests List -->
+                    <div class="flex flex-col gap-6 p-4">
+                        <!-- Card 1 -->
+                        <div
+                            class="@container flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 overflow-hidden transition-transform hover:scale-[1.01]">
+                            <div class="flex flex-col @xl:flex-row">
+                                <div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video @xl:aspect-square bg-cover"
+                                    data-alt="Brown mixed breed dog with injured leg"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA_VB8SJanFtM6_oFcHP4XEUWrkgdktoB1v1jd44jgzakRzUC4F-2HjHIL7dBm58ZQ5WDHGDpdaGZWt43-hmdSCmeJjoozRpRqEiaArt1_j2tYcVcp9dzfCbgRPjwWseRXfq5eOpHMH254atbJZusuai0KmGrWWe_5m1a-GbIzocZba_m-yC0MgwyeeeZMNqsNqwP_4i_2fqmCyrOJxgCBidjhemYCHOrSwJee8upo5OwZJkc5Nvu4iRE2-m1v3EU5thhqX4zdlUk02");'>
+                                </div>
+                                <div class="flex w-full grow flex-col items-stretch justify-between p-6">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex justify-between items-start">
+                                            <span
+                                                class="px-3 py-1 bg-red-100 text-red-600 text-xs font-black rounded-full tracking-wider uppercase">URGÊNCIA:
+                                                ALTA</span>
+                                            <span class="text-xs text-gray-400 font-medium">Recebido há 2h</span>
+                                        </div>
+                                        <p
+                                            class="text-[#111813] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">
+                                            Campanha para Totó</p>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">person</span>
+                                                <div>
+                                                    <p class="text-xs text-gray-400 uppercase font-bold">Solicitante</p>
+                                                    <p class="text-sm font-medium dark:text-gray-200">João Silva</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">pets</span>
+                                                <div>
+                                                    <p class="text-xs text-gray-400 uppercase font-bold">Espécie</p>
+                                                    <p class="text-sm font-medium dark:text-gray-200">Cachorro
+                                                        (Vira-lata)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg mt-3 border-l-4 border-primary">
+                                            <div class="flex items-start gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-primary text-xl">clinical_notes</span>
+                                                <p
+                                                    class="text-[#63886f] dark:text-gray-300 text-sm font-normal leading-normal">
+                                                    <span
+                                                        class="font-bold text-[#111813] dark:text-white">Necessidade:</span>
+                                                    Cirurgia Ortopédica. O animal foi resgatado com fratura exposta na
+                                                    pata traseira esquerda após atropelamento. Necessita pinagem.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-1 gap-3 flex-wrap pt-6 justify-end">
+                                        <button
+                                            class="flex min-w-[140px] cursor-pointer items-center justify-center gap-2 rounded-lg h-11 px-6 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm font-bold hover:bg-red-50 hover:text-red-500 transition-all">
+                                            <span class="material-symbols-outlined text-lg">close</span>
+                                            <span>Recusar</span>
+                                        </button>
+                                        <button
+                                            class="flex min-w-[180px] cursor-pointer items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-md hover:brightness-105 active:scale-95 transition-all">
+                                            <span class="material-symbols-outlined text-lg">check_circle</span>
+                                            <span>Aceitar Solicitação</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div
+                            class="@container flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 overflow-hidden transition-transform hover:scale-[1.01]">
+                            <div class="flex flex-col @xl:flex-row">
+                                <div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video @xl:aspect-square bg-cover"
+                                    data-alt="Small white kitten eating"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_tW6JCfGn-TqJeMPDqjdqfk2CslhcBXPdA7DV9ef_pyBmzTPhyroeFH9R3bghnCrHCYZ2ws9UCK7kpo0tH5e99gEP_Z4B6xPKdqbHm9ifRPAqv2mWspfuq_e1q6NRMtZFLxCC2bPqusA6ylfACOAjuY6FIEHlgcJWuVrhNW2KrTm1ggyiSCldk0BjCmkUyDFrlY3gWo1SJ7vU6oE9B0en0AFiW4vgdKr9II2HjpiYVCY7LzXv4tPS5Yd1zlwLTSp_YNaBgQKjHG8d");'>
+                                </div>
+                                <div class="flex w-full grow flex-col items-stretch justify-between p-6">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex justify-between items-start">
+                                            <span
+                                                class="px-3 py-1 bg-blue-100 text-blue-600 text-xs font-black rounded-full tracking-wider uppercase">URGÊNCIA:
+                                                MÉDIA</span>
+                                            <span class="text-xs text-gray-400 font-medium">Recebido há 5h</span>
+                                        </div>
+                                        <p
+                                            class="text-[#111813] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">
+                                            Campanha para Miau</p>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">person</span>
+                                                <div>
+                                                    <p class="text-xs text-gray-400 uppercase font-bold">Solicitante</p>
+                                                    <p class="text-sm font-medium dark:text-gray-200">Maria Oliveira</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">pets</span>
+                                                <div>
+                                                    <p class="text-xs text-gray-400 uppercase font-bold">Espécie</p>
+                                                    <p class="text-sm font-medium dark:text-gray-200">Gato (Siamês)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg mt-3 border-l-4 border-primary">
+                                            <div class="flex items-start gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-primary text-xl">restaurant</span>
+                                                <p
+                                                    class="text-[#63886f] dark:text-gray-300 text-sm font-normal leading-normal">
+                                                    <span
+                                                        class="font-bold text-[#111813] dark:text-white">Necessidade:</span>
+                                                    Suporte Alimentar Especial. Gato resgatado em estado de desnutrição
+                                                    severa, necessita de ração úmida específica e suplementos.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-1 gap-3 flex-wrap pt-6 justify-end">
+                                        <button
+                                            class="flex min-w-[140px] cursor-pointer items-center justify-center gap-2 rounded-lg h-11 px-6 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm font-bold hover:bg-red-50 hover:text-red-500 transition-all">
+                                            <span class="material-symbols-outlined text-lg">close</span>
+                                            <span>Recusar</span>
+                                        </button>
+                                        <button
+                                            class="flex min-w-[180px] cursor-pointer items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-md hover:brightness-105 active:scale-95 transition-all">
+                                            <span class="material-symbols-outlined text-lg">check_circle</span>
+                                            <span>Aceitar Solicitação</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div
+                            class="@container flex flex-col items-stretch justify-start rounded-xl shadow-lg bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 overflow-hidden transition-transform hover:scale-[1.01]">
+                            <div class="flex flex-col @xl:flex-row">
+                                <div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video @xl:aspect-square bg-cover"
+                                    data-alt="Old dog resting on a mat"
+                                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAXkUyS-mvNvWOIE5Nc3127fOB5mLeDc-w2GXj6Q2QgZUw7AelteFWBfDYXuPWv4USMaD7jQVkt9Ii_lAvNl_YbLf6H8Kc5puWgQCCeqAHwv77VblVO5dFgR5DfnM481hVWzpx9PTWB9M8-RvR3zK7Zw-Kj0tjbk360C1YU87kAl4QxLx7V9syzahP6qL5f6NqrH81u8NCFplvypACoOUx6YfEWZ17F064nWDoTkue23YHmqmRr_wd2Ms__ramB_8kDdUZ6BESPskIW");'>
+                                </div>
+                                <div class="flex w-full grow flex-col items-stretch justify-between p-6">
+                                    <div class="flex flex-col gap-2">
+                                        <div class="flex justify-between items-start">
+                                            <span
+                                                class="px-3 py-1 bg-yellow-100 text-yellow-600 text-xs font-black rounded-full tracking-wider uppercase">URGÊNCIA:
+                                                MODERADA</span>
+                                            <span class="text-xs text-gray-400 font-medium">Recebido há 1 dia</span>
+                                        </div>
+                                        <p
+                                            class="text-[#111813] dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em]">
+                                            Campanha para Duke</p>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">person</span>
+                                                <div>
+                                                    <p class="text-xs text-gray-400 uppercase font-bold">Solicitante</p>
+                                                    <p class="text-sm font-medium dark:text-gray-200">Carlos Mendes</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <span class="material-symbols-outlined text-primary">pets</span>
+                                                <div>
+                                                    <p class="text-xs text-gray-400 uppercase font-bold">Espécie</p>
+                                                    <p class="text-sm font-medium dark:text-gray-200">Cachorro (Golden
+                                                        Retriever)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg mt-3 border-l-4 border-primary">
+                                            <div class="flex items-start gap-2">
+                                                <span
+                                                    class="material-symbols-outlined text-primary text-xl">vaccines</span>
+                                                <p
+                                                    class="text-[#63886f] dark:text-gray-300 text-sm font-normal leading-normal">
+                                                    <span
+                                                        class="font-bold text-[#111813] dark:text-white">Necessidade:</span>
+                                                    Tratamento Dermatológico. Animal com quadro severo de sarna e
+                                                    infecção fúngica. Necessita de medicação e banhos terapêuticos.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex flex-1 gap-3 flex-wrap pt-6 justify-end">
+                                        <button
+                                            class="flex min-w-[140px] cursor-pointer items-center justify-center gap-2 rounded-lg h-11 px-6 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-sm font-bold hover:bg-red-50 hover:text-red-500 transition-all">
+                                            <span class="material-symbols-outlined text-lg">close</span>
+                                            <span>Recusar</span>
+                                        </button>
+                                        <button
+                                            class="flex min-w-[180px] cursor-pointer items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-md hover:brightness-105 active:scale-95 transition-all">
+                                            <span class="material-symbols-outlined text-lg">check_circle</span>
+                                            <span>Aceitar Solicitação</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!-- Sticky Footer for Mobile Actions (Optional) -->
+            <footer
+                class="md:hidden sticky bottom-0 bg-white dark:bg-slate-950 border-t border-gray-100 dark:border-gray-800 p-4 flex justify-between items-center z-40">
+                <div class="flex flex-col">
+                    <span class="text-xs text-gray-400 uppercase font-bold">Pendentes</span>
+                    <span class="text-lg font-black text-primary">12 Solicitações</span>
+                </div>
+                <button
+                    class="bg-primary text-white size-12 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+                    <span class="material-symbols-outlined">refresh</span>
+                </button>
+            </footer>
+            <!-- Page Footer -->
+            <footer class="py-6 px-10 border-t border-slate-100 dark:border-slate-800 text-center">
+                <p class="text-xs text-slate-400">© 2026 salvuspet.</p>
+            </footer>
+        </div>
+    </div>
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlElement = document.documentElement;
+
+        // Check local storage or system preference
+        function checkTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                themeIcon.textContent = 'light_mode';
+            } else {
+                htmlElement.classList.add('light');
+                htmlElement.classList.remove('dark');
+                themeIcon.textContent = 'dark_mode';
+            }
+        }
+
+        checkTheme();
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                htmlElement.classList.remove('dark');
+                htmlElement.classList.add('light');
+                localStorage.theme = 'light';
+                themeIcon.textContent = 'dark_mode';
+            } else {
+                htmlElement.classList.remove('light');
+                htmlElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                themeIcon.textContent = 'light_mode';
+            }
+        });
+    </script>
+</body>
+
+</html>

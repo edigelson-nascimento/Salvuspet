@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png"
+        href="./assets/logo2.png" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Gestão da Campanha - SalvusPet</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#15803d",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#112116",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-[#111813] dark:text-white antialiased transition-colors duration-300">
+    <div class="relative flex min-h-screen flex-col">
+        <header
+            class="sticky top-0 z-50 w-full border-b border-solid border-[#dce5df] dark:border-[#2a4030] bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-40 py-1">
+            <div class="flex items-center justify-between max-w-[1200px] mx-auto">
+                <div class="flex items-center flex-shrink-0">
+                    <a href="../fluxo_principal/code.html">
+                        <img src="./assets/logo.png"
+                            alt="SalvusPet Logo"
+                            class="h-16 w-auto drop-shadow-md transition-transform hover:scale-105 duration-300">
+                    </a>
+                </div>
+                <nav class="hidden md:flex gap-8 items-center">
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Dashboard</a>
+                    <a class="text-sm font-semibold text-primary" href="#">Minhas Campanhas</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Mensagens</a>
+                    <a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Relatórios</a>
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                </nav>
+                <div class="flex items-center gap-2 md:hidden">
+                    <button
+                        class="theme-toggle flex items-center justify-center rounded-full h-10 w-10 bg-slate-100 dark:bg-white/10 text-[#111813] dark:text-white transition-colors hover:bg-slate-200 dark:hover:bg-white/20">
+                        <span class="material-symbols-outlined theme-icon">dark_mode</span>
+                    </button>
+                    <button id="menu-toggle" class="text-2xl material-symbols-outlined p-2">menu</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="fixed inset-0 z-[100] hidden">
+            <div id="menu-overlay" class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+            <nav id="menu-content"
+                class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-background-dark shadow-2xl transition-transform translate-x-full">
+                <div class="flex flex-col h-full p-8 leading-loose">
+                    <div class="flex justify-end mb-8">
+                        <button id="menu-close" class="material-symbols-outlined text-2xl p-2">close</button>
+                    </div>
+                    <div class="flex flex-col gap-6 text-lg font-bold">
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Dashboard</a>
+                        <a href="#"
+                            class="text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Minhas
+                            Campanhas</a>
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Mensagens</a>
+                        <a href="#"
+                            class="hover:text-primary transition-colors border-b border-gray-100 dark:border-gray-800 pb-2">Relatórios</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <main class="max-w-[1200px] mx-auto px-6 py-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- SideNavBar -->
+                <aside class="w-full lg:w-64 flex-shrink-0">
+                    <div
+                        class="bg-white dark:bg-gray-900 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-800 sticky top-24">
+                        <div class="mb-6 px-2">
+                            <h3 class="text-lg font-bold">Gestão da Campanha</h3>
+                            <p class="text-sm text-gray-500 flex items-center gap-1">
+                                <span class="material-symbols-outlined text-xs">tag</span> Totó - #12345
+                            </p>
+                        </div>
+                        <nav class="flex flex-col gap-1">
+                            <a class="flex items-center gap-3 px-4 py-3 rounded-full bg-primary text-background-dark font-bold transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined">dashboard</span> Visão Geral
+                            </a>
+                            <a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined">payments</span> Finanças
+                            </a>
+                            <a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined">medical_services</span> Clínica
+                            </a>
+                            <a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined">folder</span> Documentos
+                            </a>
+                            <div class="h-px bg-gray-100 dark:bg-gray-800 my-4"></div>
+                            <a class="flex items-center gap-3 px-4 py-3 rounded-full text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all"
+                                href="#">
+                                <span class="material-symbols-outlined">settings</span> Configurações
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
+                <!-- Content Area -->
+                <div class="flex-1 space-y-8">
+                    <!-- PageHeading -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="size-16 rounded-2xl bg-cover bg-center"
+                                data-alt="Cachorro Totó olhando para a câmera"
+                                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuADyl0abe9jaRiNwbdWR-3bP-_hh1ZrvM9EmCe9ZcZlGPrGAQDSjSIirgGIDTyjWyofqYZoPAOtUtcniCEiU8bcJpA9ic2BhtGaUCCYnZqhwVvYHPsjcAlIyzXVRJioA0Rh78TlE0vMJwRDNFtqY2hCgSaaUZ2iQqXWCujV4ct9FpLhV6ZkrnanNeBfx_cee0AdfAEAOWxMZ43CPD6nA_YXmbV6dlw8TpKpZcRiAoNkPImfM45APwMH_YrhHpacLsgJ8GzxejcNyO2T')">
+                            </div>
+                            <div>
+                                <h1 class="text-4xl font-black tracking-tight leading-none">Campanha para Totó</h1>
+                                <p class="text-gray-500 mt-1">Gerencie o progresso, consultas e documentos da
+                                    arrecadação.
+                                </p>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-6 py-2.5 rounded-full text-sm font-bold shadow-sm hover:bg-gray-50 transition-all flex items-center gap-2">
+                            <span class="material-symbols-outlined text-sm">open_in_new</span> Ver Página Pública
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Stats Section -->
+                        <div class="md:col-span-2 space-y-6">
+                            <!-- ProgressBar & Financials -->
+                            <div
+                                class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                                <div class="flex justify-between items-end mb-4">
+                                    <div>
+                                        <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Meta de
+                                            Arrecadação</p>
+                                        <h4 class="text-3xl font-black">R$ 1.300,00 <span
+                                                class="text-lg font-medium text-gray-400">/ R$ 2.000,00</span></h4>
+                                    </div>
+                                    <div
+                                        class="bg-primary/20 text-primary-dark font-black px-4 py-1 rounded-full text-sm">
+                                        65% Atingido
+                                    </div>
+                                </div>
+                                <div class="h-4 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden mb-6">
+                                    <div class="h-full bg-primary rounded-full transition-all duration-1000"
+                                        style="width: 65%;"></div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+                                        <p class="text-xs text-gray-500 font-bold mb-1">DOADORES</p>
+                                        <p class="text-xl font-black">42</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+                                        <p class="text-xs text-gray-500 font-bold mb-1">DIAS RESTANTES</p>
+                                        <p class="text-xl font-black">12 dias</p>
+                                    </div>
+                                    <div class="p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50">
+                                        <p class="text-xs text-gray-500 font-bold mb-1">MÉDIA POR DOAÇÃO</p>
+                                        <p class="text-xl font-black">R$ 31,00</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Clinic Details -->
+                            <div
+                                class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-lg font-bold flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-primary">clinical_notes</span>
+                                        Detalhes
+                                        da Clínica
+                                    </h3>
+                                    <span
+                                        class="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">calendar_today</span> AGENDADO
+                                    </span>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-6">
+                                    <div class="flex-1 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-400 font-bold mb-2">CLÍNICA VETERINÁRIA</p>
+                                        <p class="font-bold">Centro Veterinário São Francisco</p>
+                                        <p class="text-sm text-gray-500">Rua das Amendoeiras, 452 - Pinheiros</p>
+                                    </div>
+                                    <div class="flex-1 p-4 rounded-xl border border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-400 font-bold mb-2">PROCEDIMENTO</p>
+                                        <p class="font-bold">Cirurgia de Fêmur + Internação</p>
+                                        <p class="text-sm text-gray-500">Agendado para: 24 Out, 09:30h</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-100 dark:border-yellow-900/30 rounded-xl flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-yellow-600">info</span>
+                                    <p class="text-sm text-yellow-800 dark:text-yellow-200">Exame de sangue
+                                        pré-operatório
+                                        está com status <span class="font-bold">Pendente</span>. Por favor, anexe o
+                                        resultado.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Actions & Management Sidebar -->
+                        <div class="space-y-6">
+                            <div
+                                class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                                <h3 class="text-lg font-bold mb-6">Gerenciar Campanha</h3>
+                                <div class="flex flex-col gap-3">
+                                    <button
+                                        class="w-full bg-primary hover:bg-primary/90 text-background-dark font-black py-3 rounded-full shadow-lg transition-all flex items-center justify-center gap-2">
+                                        <span class="material-symbols-outlined">edit_note</span> Atualizar Status
+                                    </button>
+                                    <button
+                                        class="w-full border-2 border-primary text-primary hover:bg-primary/5 font-black py-3 rounded-full transition-all flex items-center justify-center gap-2">
+                                        <span class="material-symbols-outlined">add_a_photo</span> Adicionar Fotos
+                                    </button>
+                                    <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800">
+                                        <p class="text-xs text-gray-400 mb-3 text-center">Zona de Perigo</p>
+                                        <button
+                                            class="w-full bg-red-50 dark:bg-red-900/10 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/20 font-bold py-3 rounded-full transition-all flex items-center justify-center gap-2 group">
+                                            <span class="material-symbols-outlined group-hover:shake">cancel</span>
+                                            Cancelar
+                                            Campanha
+                                        </button>
+                                        <p class="text-[10px] text-gray-400 text-center mt-2 px-4 leading-tight">Ao
+                                            cancelar, todos os doadores serão reembolsados e a página ficará offline.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Linked Documents -->
+                            <div
+                                class="bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm">
+                                <h3 class="text-lg font-bold mb-4 flex items-center justify-between">
+                                    Documentos
+                                    <button class="text-primary hover:bg-primary/10 p-1 rounded-full transition-colors">
+                                        <span class="material-symbols-outlined">add_circle</span>
+                                    </button>
+                                </h3>
+                                <div class="space-y-3">
+                                    <div
+                                        class="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 transition-colors">
+                                        <div class="flex items-center gap-3 overflow-hidden">
+                                            <span class="material-symbols-outlined text-gray-400">picture_as_pdf</span>
+                                            <div class="truncate">
+                                                <p class="text-sm font-bold truncate">Laudo_Ortopedico.pdf</p>
+                                                <p class="text-[10px] text-gray-400">1.2 MB • 15 Out 2023</p>
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="material-symbols-outlined text-gray-400 hover:text-primary transition-colors">download</button>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 transition-colors">
+                                        <div class="flex items-center gap-3 overflow-hidden">
+                                            <span class="material-symbols-outlined text-gray-400">image</span>
+                                            <div class="truncate">
+                                                <p class="text-sm font-bold truncate">Recibo_Clinica_01.jpg</p>
+                                                <p class="text-[10px] text-gray-400">850 KB • 18 Out 2023</p>
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="material-symbols-outlined text-gray-400 hover:text-primary transition-colors">download</button>
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-between p-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 transition-colors">
+                                        <div class="flex items-center gap-3 overflow-hidden text-yellow-600">
+                                            <span class="material-symbols-outlined">pending</span>
+                                            <div class="truncate">
+                                                <p class="text-sm font-bold truncate">Exame_Sangue.pdf</p>
+                                                <p class="text-[10px]">Aguardando upload</p>
+                                            </div>
+                                        </div>
+                                        <button
+                                            class="material-symbols-outlined hover:text-primary transition-colors">upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Cancellation Confirmation Modal (Simulated Hidden) -->
+        <div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+            <div class="bg-white dark:bg-gray-900 rounded-xl max-w-md w-full p-8 relative shadow-2xl">
+                <div class="flex flex-col items-center text-center">
+                    <div class="size-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-4xl">warning</span>
+                    </div>
+                    <h2 class="text-2xl font-black mb-2">Cancelar Campanha?</h2>
+                    <p class="text-gray-500 mb-6">Esta ação não pode ser desfeita. A campanha será encerrada e o
+                        processo de
+                        reembolso para 42 doadores será iniciado automaticamente.</p>
+                    <label
+                        class="flex items-start gap-3 bg-red-50 dark:bg-red-900/10 p-4 rounded-xl mb-8 cursor-pointer text-left">
+                        <input class="mt-1 rounded text-red-600 focus:ring-red-600" type="checkbox" />
+                        <span class="text-sm text-red-800 dark:text-red-300">Entendo que o cancelamento é irreversível e
+                            afetará a reputação da minha conta de tutor.</span>
+                    </label>
+                    <div class="flex gap-4 w-full">
+                        <button
+                            class="flex-1 py-3 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all">Manter
+                            Campanha</button>
+                        <button
+                            class="flex-1 py-3 rounded-full font-bold bg-red-600 text-white shadow-lg hover:bg-red-700 transition-all">Confirmar
+                            Cancelamento</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="py-6 px-10 border-t border-slate-100 dark:border-slate-800 text-center">
+        <p class="text-xs text-slate-400">© 2026 salvuspet.</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuContent = document.getElementById('menu-content');
+
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => {
+                menuContent.classList.remove('translate-x-full');
+            }, 10);
+        }
+
+        function closeMenu() {
+            menuContent.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenu.classList.add('hidden');
+            }, 300);
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', openMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Dark Mode Logic
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle');
+        const themeIcons = document.querySelectorAll('.theme-icon');
+        const htmlElement = document.documentElement;
+
+        function updateIcons(isDark) {
+            themeIcons.forEach(icon => {
+                icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            });
+        }
+
+        // Check local storage or system preference
+        function checkTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
+                updateIcons(true);
+            } else {
+                htmlElement.classList.add('light');
+                htmlElement.classList.remove('dark');
+                updateIcons(false);
+            }
+        }
+
+        checkTheme();
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    htmlElement.classList.add('light');
+                    localStorage.theme = 'light';
+                    updateIcons(false);
+                } else {
+                    htmlElement.classList.remove('light');
+                    htmlElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                    updateIcons(true);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
